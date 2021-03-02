@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8">
+    <title>Stage 1</title>
+    <script src="https://aframe.io/releases/1.1.0/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
+    <script src="https://unpkg.com/aframe-event-set-component@3.0.3/dist/aframe-event-set-component.min.js"></script>
+    <script src="https://rawgit.com/fernandojsg/aframe-teleport-controls/master/dist/aframe-teleport-controls.min.js"></script>
+    <script src="https://recast-api.donmccurdy.com/aframe-inspector-plugin-recast.js"></script>
+    <script src="bundle.js"></script>
+  </head>
+  <body>
+    <a-scene stats >
+        <a-plane height="2" width="2" color="#000000" rotation="-90 0 0" position="0 0.05 0">
+        </a-plane>
+        <a-plane height="8" width="8" color="#0000ff" rotation="-90 0 0">
+        </a-plane>
+        <a-box height="1" width="1" color="#ff0000" position="0 0 0">
+        </a-box>
+        <a-box height="0.5"  depth="0.3 "width="1.7" color="#00ff00" position="0 0 0" rotation="0 0 -90">
+        </a-box>
+
+        <a-assets>
+            <a-asset-item id="red_button" src="assets/red_button/scene.gltf"></a-asset-item>
+          </a-assets>
+
+          <a-entity hover-highlighter gltf-model="#red_button" position="0 1.07 0" scale="0.1, 0.1, 0.1"></a-entity>
+    
+
+        <a-entity id="rig"
+        disable-in-vr="component: movement-controls"
+        movement-controls="constrainToNavMesh: true;"
+        position="0 0 3"
+      >
+
+        <a-entity id="head" position="0 1.7 0" camera look-controls="pointerLockEnabled: true">
+          <a-entity
+            id="eyes"
+            geometry="primitive: circle; radius: 0.0005"
+            material="color: black"
+            position="0 0 -0.1"
+            cursor
+            disable-in-vr="component: geometry"
+            disable-in-vr__cursor="component: cursor"
+            raycaster="objects: [hover-highlighter]; far: 1.5"
+          ></a-entity>
+        </a-entity>
+
+        <a-entity id="hands" position="0 0.9 0" bind-rotation="target: #head" disable-in-vr="component: bind-rotation" disable-in-vr__pos="component: position">
+          <a-entity id="left-hand"
+            position="-0.3 0 -0.3"
+            rotation="0 0 90"
+            bind-rotation="target: #head"
+            disable-in-vr="component: bind-rotation"
+            hand-controls="hand: left"
+            teleport-controls="cameraRig: #rig; collisionEntities: #nav-mesh-spawn; button: trigger; curveShootingSpeed: 8"
+          ></a-entity>
+          <a-entity id="right-hand"
+            position="0.3 0 -0.3"
+            rotation="0 0 -90"
+            bind-rotation="target: #head"
+            disable-in-vr="component: bind-rotation"
+            hand-controls="hand: right"
+            laser-controls="hand: right"
+            raycaster="far: 1.5; objects: [hover-highlighter]; showLine: true"
+          ></a-entity>
+        </a-entity>
+
+      </a-entity>
+      </a-scene>
+
+  </body>
+</html>
