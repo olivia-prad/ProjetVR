@@ -1,0 +1,24 @@
+{
+  "name": "Projet-atomic",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "preview": "live-server dist/",
+    "build": "webpack",
+    "watch": "webpack --mode=development --watch"
+  },
+  "keywords": [],
+  "author": "Michelle Ponti & Olivia Pradervand",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.13.1",
+    "@babel/preset-env": "^7.13.0",
+    "babel-loader": "^8.2.2",
+    "webpack": "^5.24.0",
+    "webpack-cli": "^4.5.0"
+  },
+  "dependencies": {
+    "jquery": "^3.5.1"
+  }
+}
