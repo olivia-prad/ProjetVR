@@ -12,21 +12,16 @@
   </head>
   <body>
     <a-scene stats >
-        <a-plane height="2" width="2" color="#000000" rotation="-90 0 0" position="0 0.05 0">
-        </a-plane>
-        <a-plane height="8" width="8" color="#0000ff" rotation="-90 0 0">
-        </a-plane>
-        <a-box height="1" width="1" color="#ff0000" position="0 0 0">
-        </a-box>
-        <a-box height="0.5"  depth="0.3 "width="1.7" color="#00ff00" position="0 0 0" rotation="0 0 -90">
-        </a-box>
+
+      
+        <a-box src ="assets/textures/wall.jpg" height="2" width="2"></a-box>
 
         <a-assets>
             <a-asset-item id="red_button" src="assets/red_button/scene.gltf"></a-asset-item>
           </a-assets>
 
           <a-entity hover-highlighter gltf-model="#red_button" position="0 1.07 0" scale="0.1, 0.1, 0.1"></a-entity>
-    
+
 
         <a-entity id="rig"
         disable-in-vr="component: movement-controls"

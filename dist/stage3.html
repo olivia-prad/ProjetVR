@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8">
+    <title>IM VR</title>
+    <script src="https://aframe.io/releases/1.1.0/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
+    <script src="https://unpkg.com/aframe-event-set-component@3.0.3/dist/aframe-event-set-component.min.js"></script>
+    <script src="https://rawgit.com/fernandojsg/aframe-teleport-controls/master/dist/aframe-teleport-controls.min.js"></script>
+    <script src="https://recast-api.donmccurdy.com/aframe-inspector-plugin-recast.js"></script>
+    <script src="bundle.js"></script>
+  </head>
+  <body>
+    <a-scene stats   >
+        
+            <a-sky src="assets/backgrounds/wood.jpg"></a-sky>
+  
+            <a-assets>
+                <a-asset-item id="external_door" src="assets/external_door/scene.gltf"></a-asset-item>
+              </a-assets>
+    
+              <a-entity hover-highlighter gltf-model="#external_door" position="-2 1 -2" scale="1, 1, 1"></a-entity>
+        
+
+              <a-entity id="audio" sound="src:url(assets/audio/birds.wav); autoplay: true; loop=true" ></a-entity>
+
+
+
+      <a-entity id="rig"
+        disable-in-vr="component: movement-controls"
+        movement-controls="constrainToNavMesh: true;"
+        position="0 0 3"
+      >
+
+        <a-entity id="head" position="0 1.7 0" camera look-controls="pointerLockEnabled: true">
+          <a-entity
+            id="eyes"
+            geometry="primitive: circle; radius: 0.0005"
+            material="color: black"
+            position="0 0 -0.1"
+            cursor
+            disable-in-vr="component: geometry"
+            disable-in-vr__cursor="component: cursor"
+            raycaster="objects: [hover-highlighter]; far: 1.5"
+          ></a-entity>
+        </a-entity>
+
+        <a-entity id="hands" position="0 0.9 0" bind-rotation="target: #head" disable-in-vr="component: bind-rotation" disable-in-vr__pos="component: position">
+          <a-entity id="left-hand"
+            position="-0.3 0 -0.3"
+            rotation="0 0 90"
+            bind-rotation="target: #head"
+            disable-in-vr="component: bind-rotation"
+            hand-controls="hand: left"
+            teleport-controls="cameraRig: #rig; collisionEntities: #nav-mesh-spawn; button: trigger; curveShootingSpeed: 8"
+          ></a-entity>
+          <a-entity id="right-hand"
+            position="0.3 0 -0.3"
+            rotation="0 0 -90"
+            bind-rotation="target: #head"
+            disable-in-vr="component: bind-rotation"
+            hand-controls="hand: right"
+            laser-controls="hand: right"
+            raycaster="far: 1.5; objects: [hover-highlighter]; showLine: true"
+          ></a-entity>
+        </a-entity>
+
+      </a-entity>
+
+      
+
+    </a-scene>
+
+  </body>
+</html>
