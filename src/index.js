@@ -8,3 +8,4 @@ import "components/dropzone.js";
 import "components/hexatile.js";
 import "components/navmesh-manager.js";
 import "components/ws-synch.js";
+import "components/music-toggle.js";
