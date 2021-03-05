@@ -1,0 +1,11 @@
+Model Information:
+* title:	Slice Of Bread
+* source:	https://sketchfab.com/3d-models/slice-of-bread-fbc91465203845f7a42b972b80a9c435
+* author:	Liam_3dmods (https://sketchfab.com/Liam_3dmods)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Slice Of Bread" (https://sketchfab.com/3d-models/slice-of-bread-fbc91465203845f7a42b972b80a9c435) by Liam_3dmods (https://sketchfab.com/Liam_3dmods) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
