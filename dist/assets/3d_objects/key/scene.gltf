@@ -1,0 +1,501 @@
+{
+  "accessors": [
+    {
+      "bufferView": 2,
+      "componentType": 5126,
+      "count": 388,
+      "max": [
+        8.8730983734130859,
+        6.1404414176940918,
+        1.0000007152557373
+      ],
+      "min": [
+        -16.187906265258789,
+        -6.130007266998291,
+        5.6333151476906096e-09
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 4656,
+      "componentType": 5126,
+      "count": 388,
+      "max": [
+        1,
+        1,
+        1
+      ],
+      "min": [
+        -1,
+        -1,
+        -1
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 3,
+      "componentType": 5126,
+      "count": 388,
+      "max": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "min": [
+        -1,
+        -1,
+        -1,
+        1
+      ],
+      "type": "VEC4"
+    },
+    {
+      "bufferView": 1,
+      "componentType": 5126,
+      "count": 388,
+      "max": [
+        0.98304086923599243,
+        0.87196439504623413
+      ],
+      "min": [
+        0.013371765613555908,
+        0.01328730583190918
+      ],
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 0,
+      "componentType": 5125,
+      "count": 936,
+      "max": [
+        387
+      ],
+      "min": [
+        0
+      ],
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 9312,
+      "componentType": 5126,
+      "count": 308,
+      "max": [
+        5.3702592849731445,
+        5.3706512451171875,
+        1.4386135339736938
+      ],
+      "min": [
+        -5.3749399185180664,
+        -5.3754191398620605,
+        -0.38888466358184814
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 13008,
+      "componentType": 5126,
+      "count": 308,
+      "max": [
+        0.99579077959060669,
+        0.9989854097366333,
+        0.98914062976837158
+      ],
+      "min": [
+        -0.98754435777664185,
+        -0.99042707681655884,
+        -0.99969494342803955
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 3,
+      "byteOffset": 6208,
+      "componentType": 5126,
+      "count": 308,
+      "max": [
+        0.99993592500686646,
+        0.99748122692108154,
+        0.99184799194335938,
+        1
+      ],
+      "min": [
+        -0.99861866235733032,
+        -0.9996330738067627,
+        -0.15797622501850128,
+        1
+      ],
+      "type": "VEC4"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 3104,
+      "componentType": 5126,
+      "count": 308,
+      "max": [
+        0.9948958158493042,
+        0.98947322368621826
+      ],
+      "min": [
+        0.01649118959903717,
+        0.88570499420166016
+      ],
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 0,
+      "byteOffset": 3744,
+      "componentType": 5125,
+      "count": 1554,
+      "max": [
+        307
+      ],
+      "min": [
+        0
+      ],
+      "type": "SCALAR"
+    }
+  ],
+  "asset": {
+    "extras": {
+      "author": "Inside Out Art (https://sketchfab.com/ranajitdas)",
+      "license": "CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)",
+      "source": "https://sketchfab.com/models/e258f14fb7874f299ebef320f7aee4ee",
+      "title": "Key Chain"
+    },
+    "generator": "Sketchfab-3.37.2",
+    "version": "2.0"
+  },
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 9960,
+      "byteOffset": 0,
+      "name": "floatBufferViews",
+      "target": 34963
+    },
+    {
+      "buffer": 0,
+      "byteLength": 5568,
+      "byteOffset": 9960,
+      "byteStride": 8,
+      "name": "floatBufferViews",
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 16704,
+      "byteOffset": 15528,
+      "byteStride": 12,
+      "name": "floatBufferViews",
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 11136,
+      "byteOffset": 32232,
+      "byteStride": 16,
+      "name": "floatBufferViews",
+      "target": 34962
+    }
+  ],
+  "buffers": [
+    {
+      "byteLength": 43368,
+      "uri": "scene.bin"
+    }
+  ],
+  "images": [
+    {
+      "uri": "textures/Scene_-_Root_metallicRoughness.png"
+    },
+    {
+      "uri": "textures/Scene_-_Root_baseColor.png"
+    },
+    {
+      "uri": "textures/Scene_-_Root_normal.png"
+    }
+  ],
+  "materials": [
+    {
+      "doubleSided": true,
+      "name": "Scene_-_Root",
+      "normalTexture": {
+        "index": 2,
+        "scale": 1,
+        "texCoord": 0
+      },
+      "occlusionTexture": {
+        "index": 0,
+        "strength": 1,
+        "texCoord": 0
+      },
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "baseColorTexture": {
+          "index": 1,
+          "texCoord": 0
+        },
+        "metallicFactor": 1,
+        "metallicRoughnessTexture": {
+          "index": 0,
+          "texCoord": 0
+        },
+        "roughnessFactor": 1
+      }
+    }
+  ],
+  "meshes": [
+    {
+      "name": "Key__0",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 1,
+            "POSITION": 0,
+            "TANGENT": 2,
+            "TEXCOORD_0": 3
+          },
+          "indices": 4,
+          "material": 0,
+          "mode": 4
+        }
+      ]
+    },
+    {
+      "name": "KeyRing__0",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 6,
+            "POSITION": 5,
+            "TANGENT": 7,
+            "TEXCOORD_0": 8
+          },
+          "indices": 9,
+          "material": 0,
+          "mode": 4
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "children": [
+        1
+      ],
+      "name": "RootNode (gltf orientation matrix)",
+      "rotation": [
+        -0.70710678118654746,
+        -0,
+        -0,
+        0.70710678118654757
+      ]
+    },
+    {
+      "children": [
+        2
+      ],
+      "name": "RootNode (model correction matrix)"
+    },
+    {
+      "children": [
+        3
+      ],
+      "matrix": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        -1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      "name": "KeyChain.FBX"
+    },
+    {
+      "children": [
+        4
+      ],
+      "name": "RootNode"
+    },
+    {
+      "children": [
+        5,
+        8
+      ],
+      "matrix": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        0.999999999999999,
+        4.3711388286737922e-08,
+        0,
+        0,
+        -4.3711388286737922e-08,
+        0.999999999999999,
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      "name": "KeyChain"
+    },
+    {
+      "children": [
+        6
+      ],
+      "matrix": [
+        -3.0093004710384993e-05,
+        -0.008971612130175631,
+        0.00081648708156590298,
+        0,
+        -1.5073062956494551e-06,
+        -0.00081648644236747973,
+        -0.0089716606609313871,
+        0,
+        0.0090086896869968139,
+        -3.0105767570665238e-05,
+        1.2263165977358575e-06,
+        0,
+        2.3518805392086506e-07,
+        0.022315029054880142,
+        0.067149639129638672,
+        1
+      ],
+      "name": "Key"
+    },
+    {
+      "children": [
+        7
+      ],
+      "matrix": [
+        -6.123233995736766e-17,
+        -1,
+        1.2246467991473532e-16,
+        0,
+        -6.1232339957367648e-17,
+        1.2246467991473532e-16,
+        1,
+        0,
+        -1,
+        6.1232339957367648e-17,
+        -6.123233995736766e-17,
+        0,
+        0.50000035762786865,
+        7.7098007202148438,
+        -0.0052165784873068333,
+        1
+      ],
+      "name": ""
+    },
+    {
+      "mesh": 0,
+      "name": "Key__0"
+    },
+    {
+      "children": [
+        9
+      ],
+      "matrix": [
+        -0.0084654450871204708,
+        -0.0030811719255111839,
+        7.8756904937080104e-10,
+        0,
+        6.1775136663854301e-09,
+        -1.9275265713179647e-08,
+        -0.0090087400749098365,
+        0,
+        0.0030811719255050916,
+        -0.008465445087098563,
+        2.0225656817843508e-08,
+        0,
+        -0.003532111644744873,
+        0.021811012178659439,
+        0.054978609085083008,
+        1
+      ],
+      "name": "KeyRing"
+    },
+    {
+      "children": [
+        10
+      ],
+      "matrix": [
+        -6.1232336307635789e-17,
+        -0.99999994039535522,
+        1.2246467261527158e-16,
+        0,
+        -0.99999994039530216,
+        6.1232296403574348e-17,
+        -3.2584136270360605e-07,
+        0,
+        3.258413821252659e-07,
+        -1.2246469986675909e-16,
+        -0.99999999999994693,
+        0,
+        0.44406157732009888,
+        -4.9708280563354492,
+        0.37274459004402161,
+        1
+      ],
+      "name": ""
+    },
+    {
+      "mesh": 1,
+      "name": "KeyRing__0"
+    }
+  ],
+  "samplers": [
+    {
+      "magFilter": 9729,
+      "minFilter": 9987,
+      "wrapS": 10497,
+      "wrapT": 10497
+    }
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "name": "OSG_Scene",
+      "nodes": [
+        0
+      ]
+    }
+  ],
+  "textures": [
+    {
+      "sampler": 0,
+      "source": 0
+    },
+    {
+      "sampler": 0,
+      "source": 1
+    },
+    {
+      "sampler": 0,
+      "source": 2
+    }
+  ]
+}
+
