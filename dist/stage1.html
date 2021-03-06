@@ -116,9 +116,13 @@
     <a-entity 
     hover-highlighter 
     gltf-model="#red_button" 
-    position="-1.49 1.5 0" 
+    position="-112 1.5 0" 
     rotation="0 0 -90" 
-    scale="0.08, 0.05, 0.08"></a-entity> 
+    scale="0.08, 0.05, 0.08"
+    listen-to__danger="target: #danger; event: opendanger; emit: buttonvisible; once:true"
+    animation="property: position; to: -1.49 1.5 0; dur: 0; startEvents: buttonvisible"
+    portal="evtbase: click; page: stage3.html"
+    ></a-entity> 
 
 
     <a-entity 
@@ -218,7 +222,7 @@ width="1">
 
 
     <!-- lumière  -->
-    <a-entity light="type: ambient; color: #FFFFF; intensity: 1" ></a-entity>
+    <a-entity light="type: ambient; color: #FFFFFF; intensity: 1" ></a-entity>
     <a-entity light="type: point; color: #fbee98; intensity: 5; distance: 6; decay: 6" position="-0.458 2.524 0"></a-entity>
     <a-entity light="type: directional; color: #fbee98; intensity: 1; distance: 6; decay: 2" position="0 1 0"></a-entity>
 

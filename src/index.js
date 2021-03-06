@@ -10,3 +10,5 @@ import "components/navmesh-manager.js";
 import "components/ws-synch.js";
 import "components/toggle-event.js";
 import "components/wait-event.js";
+import "components/if.js";
+import "components/portal.js";

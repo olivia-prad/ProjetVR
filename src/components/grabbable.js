@@ -28,6 +28,7 @@ AFRAME.registerComponent('grabbable', {
     if (this.target) return;
     this.target = this.data.target;
     this.el.emit('grabbed');
+    console.log("grabbed")
   },
   ungrab: function () {
     if (!this.target) return;
