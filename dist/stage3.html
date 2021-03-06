@@ -32,7 +32,7 @@
       <!-- sounds  -->
       <a-asset-item id="crow_sound" response-type="arraybuffer" src="assets/audio/crow.wav" preload="auto"></a-asset-item>
       <a-asset-item id="outdoor_sound" response-type="arraybuffer" src="assets/audio/outdoor.mp3" preload="auto"></a-asset-item>
-
+      <a-asset-item id="car_sound" response-type="arraybuffer" src="assets/audio/engine_start.wav" preload="auto"></a-asset-item>
       <!-- objects  -->
       <a-asset-item id="car" src="assets/3d_objects/car/scene.gltf"></a-asset-item>
       <a-asset-item id="barrel" src="assets/3d_objects/barrel/scene.gltf"></a-asset-item>
@@ -72,7 +72,7 @@
 
 <a-sound src="#outdoor_sound" autoplay="true" loop="true" volume="0.2"></a-sound>
 
-    <a-plane position="-35 -0.1 -1.5" rotation="-90 0 0" material="shader: flat; src: #asphalt; repeat: 70 2 ;" height="3" width="70"></a-plane>
+    <a-plane position="-19 -0.1 -1.5" rotation="-90 0 0" material="shader: flat; src: #asphalt; repeat: 40 2 ;" height="3" width="30"></a-plane>
     <a-plane position="0 -0.15 -1.5" rotation="-90 0 0" material="shader: flat; src: #grass; repeat: 35 25 ;"color="green" height="50" width="70"></a-plane>
 
     <!-- structure de l'étage  -->
@@ -90,7 +90,8 @@
     position="-3 0 -1.5" 
     scale="0.013, 0.013, 0.013" 
     rotation="0 -90 0"
-    
+    sound="src: #car_sound; on: click"
+    animation="property: position; to: -30 0 -1.5 ; dur: 10000; delay: 2000; startEvents: click"
     ></a-entity>
  
     <a-entity      
@@ -166,7 +167,7 @@
 
     <!-- lumières -->
 
-    <a-entity position="0 1 0" light="type: ambient; color: #FFFFF; intensity: 1.2" ></a-entity>
+    <a-entity position="0 1 0" light="type: ambient; color: #FFFFFF; intensity: 1.2" ></a-entity>
     <!-- <a-entity position="0 2.38 0" light="type: point; color: #FFFFF; intensity: 1" ></a-entity> -->
 
 
@@ -179,8 +180,14 @@
 
     <!-- avatar  -->
 
-    <a-entity id="rig" disable-in-vr="component: movement-controls" movement-controls="constrainToNavMesh: true;"
-      position="-0.5 0 +1">
+    <a-entity 
+    id="rig" 
+    disable-in-vr="component: movement-controls" 
+    movement-controls="constrainToNavMesh: true;"
+    position="-0.5 0 +1"
+    listen_to="target: #car; event: click; emit: trip"
+    animation="property: position; to: -30 0.5 -1.5 ; dur: 10000; delay: 2000; startEvents: trip"
+    >
 
       <a-entity id="head" position="0 1.7 0" camera look-controls="pointerLockEnabled: true">
         <a-entity id="eyes" geometry="primitive: circle; radius: 0.0005" material="color: black" position="0 0 -0.1"
