@@ -28,11 +28,12 @@
       <img id="asphalt" src="assets/textures/asphalt.png"></img>
       <img id="grass" src="assets/textures/grass.png"></img>
 
-
       <!-- sounds  -->
       <a-asset-item id="crow_sound" response-type="arraybuffer" src="assets/audio/crow.wav" preload="auto"></a-asset-item>
       <a-asset-item id="outdoor_sound" response-type="arraybuffer" src="assets/audio/outdoor.mp3" preload="auto"></a-asset-item>
       <a-asset-item id="car_sound" response-type="arraybuffer" src="assets/audio/engine_start.wav" preload="auto"></a-asset-item>
+      <a-asset-item id="pick_sound" response-type="arraybuffer" src="assets/audio/pick.wav" preload="auto"></a-asset-item>
+      
       <!-- objects  -->
       <a-asset-item id="car" src="assets/3d_objects/car/scene.gltf"></a-asset-item>
       <a-asset-item id="barrel" src="assets/3d_objects/barrel/scene.gltf"></a-asset-item>
@@ -85,13 +86,14 @@
 
 
     <a-entity     
-    hover-highlighter   
+    hover-highlighter  
+    id="entity-car" 
     gltf-model="#car" 
     position="-3 0 -1.5" 
     scale="0.013, 0.013, 0.013" 
     rotation="0 -90 0"
     sound="src: #car_sound; on: click"
-    animation="property: position; to: -30 0 -1.5 ; dur: 10000; delay: 2000; startEvents: click"
+    animation="property: object3D.position.x; to: -33 ; dur: 10000; delay: 2000; startEvents: click; easing: linear;"
     ></a-entity>
  
     <a-entity      
@@ -101,24 +103,29 @@
     position="1.9 0.3 -2" 
     scale="0.25, 0.25, 0.25" 
     rotation="0 90 0"
+    sound="src: #pick_sound; on: click;"
     ></a-entity>
 
-    <a-entity      
+    <a-entity   
+    id="bread_entity"   
     hover-highlighter  
     gltf-model="#bread" 
     grabbable="target: #left-hand" 
     position="2.4 1.57 -0.8" 
     scale="0.0015, 0.0015, 0.0015" 
     rotation="0 90 0"
+    sound="src: #pick_sound; on: click;"
     ></a-entity>
 
     <a-entity  
+    id="key_entity"   
     hover-highlighter      
     grabbable="target: #left-hand"
     gltf-model="#key" 
     position="-1.3 1.35 1.2" 
     scale="0.8,0.8, 0.8" 
     rotation="-90 0 0"
+    sound="src: #pick_sound; on: click;"
     ></a-entity>
 
     <a-entity   
@@ -143,7 +150,7 @@
 
     <!-- autre objets  -->
 
-    <a-entity gltf-model="#light" position="0 3 0" scale="0.01, 0.01, 0.01" rotation="90 0 0"></a-entity>
+    <a-entity gltf-model="#light" position="0 3.5 0" scale="0.01, 0.01, 0.01" rotation="90 0 0"></a-entity>
     <a-entity gltf-model="#barrel" position="-2 0 0.3" scale="0.01, 0.01, 0.01" rotation="0 180 0"></a-entity>
     <a-entity gltf-model="#electric" position="-3.5 0 1.2" scale="0.023, 0.023, 0.023" rotation="0 180 0"></a-entity>
     <a-entity gltf-model="#soda" position="2.4  1.65  -1" scale="0.015, 0.015, 0.015" rotation="0 30 0"></a-entity>    
@@ -159,9 +166,14 @@
     <a-entity gltf-model="#tree" position="-18  0.1 -6" scale="0.006, 0.006, 0.006" rotation="0 0 0"></a-entity>
     <a-entity gltf-model="#tree" position="-6  0.1 -3" scale="0.007, 0.007, 0.007" rotation="0 0 0"></a-entity>
     <a-entity gltf-model="#tree" position="-8  0.1 6" scale="0.006, 0.006, 0.006" rotation="0 0 0"></a-entity>
-    <a-entity gltf-model="#tree" position="-23  0.1 2" scale="0.004, 0.004, 0.004" rotation="0 0 0"></a-entity>
+    <a-entity gltf-model="#tree" position="-23  0.1 4" scale="0.004, 0.004, 0.004" rotation="0 0 0"></a-entity>
     <a-entity gltf-model="#tree2" position="-18  0.1 8" scale="0.002, 0.002, 0.002" rotation="0 0 0"></a-entity>
 
+         <a-entity id="sign" position="-35 0.2 -1" rotation="0 90 0 ">
+            <a-entity position="0 1.15 0" geometry="primitive: box; width: 0.9; height: 0.4; depth: 0.05" material="color: #FFFFFF">
+              <a-entity text="value: The End!  \n\n © Michelle Ponti & Olivia Pradervand \n\n COMEM+ 2021; color: black" position="0.15 0 0.025"></a-entity>
+            </a-entity>
+          </a-entity>
 
 
 
@@ -185,10 +197,10 @@
     disable-in-vr="component: movement-controls" 
     movement-controls="constrainToNavMesh: true;"
     position="-0.5 0 +1"
-    listen_to="target: #car; event: click; emit: trip"
-    animation="property: position; to: -30 0.5 -1.5 ; dur: 10000; delay: 2000; startEvents: trip"
+    listen-to="target: #entity-car; event: click; emit: trip; once: true;"
+    event-set__trip="_event: trip; position: -0.5 -0.5 -1.1; rotation: 0 90 0"
+    animation="property: object3D.position.x; to: -30.5 ; dur: 10000; delay: 2000; easing: linear; startEvents: trip"
     >
-
       <a-entity id="head" position="0 1.7 0" camera look-controls="pointerLockEnabled: true">
         <a-entity id="eyes" geometry="primitive: circle; radius: 0.0005" material="color: black" position="0 0 -0.1"
           cursor disable-in-vr="component: geometry" disable-in-vr__cursor="component: cursor"

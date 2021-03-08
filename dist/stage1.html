@@ -63,6 +63,7 @@
     <!--objets  -->
         <!-- box danger -->
     <a-plane 
+    id="danger-entity"
     position="-1.42 1.5 0" 
     rotation="0 90 0" 
     material="shader: flat; src: #danger ; " 
@@ -119,7 +120,7 @@
     position="-112 1.5 0" 
     rotation="0 0 -90" 
     scale="0.08, 0.05, 0.08"
-    listen-to__danger="target: #danger; event: opendanger; emit: buttonvisible; once:true"
+    listen-to="target: #danger-entity; event: opendanger; emit: buttonvisible; once:true"
     animation="property: position; to: -1.49 1.5 0; dur: 0; startEvents: buttonvisible"
     portal="evtbase: click; page: stage3.html"
     ></a-entity> 
@@ -132,8 +133,11 @@
     position="-1.475 1.76 0.185" 
     scale="0.001, 0.001, 0.001"
     rotation="90 0 -90"
-    sound="src: #screwfall_sound; on: click"
-    animation="property: position; to: -1.4 0.1 0.185;dur: 10; startEvents: click"
+    listent-to="target: #screwdriver-entity; event: grabbed; emit; grab"
+    if="cond1: grab; cond2: click; result: fall"
+    sound="src: #screwfall_sound; on: fall"
+    animation="property: position; to: -1.4 0.1 0.185; dur: 10; startEvents: fall"
+
     ></a-entity>
     <a-entity 
     id="screw2"
@@ -168,7 +172,7 @@
 
 
     <a-entity 
-    id="screwdriver_id"
+    id="screwdriver-entity"
     hover-highlighter
     grabbable="target: #right-hand"
     gltf-model="#screwdriver" 
@@ -180,13 +184,11 @@
 
 <!-- autre décor -->
 
-<a-plane 
-position="+0 2 -1.49" 
-rotation="0 0 0" 
-material="shader: flat; src: #cam ; " 
-height="0.8"
-width="1">
-  </a-plane>
+  <a-entity id="sign" position="0 0.5 -1" rotation="0 0 0 ">
+    <a-entity position="0 1.15 0" geometry="primitive: box; width: 1; height: 0.5; depth: 0.05" material="color: #FFFFFF">
+      <a-entity text="value: Level -2  \n\n Find the button to disable the security systems! ; color: black" position="0.15 0 0.025"></a-entity>
+    </a-entity>
+  </a-entity>
 
 
 
