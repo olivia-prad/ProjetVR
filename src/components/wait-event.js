@@ -32,8 +32,9 @@ AFRAME.registerComponent('wait-event', {
         this.state++;
      }
      else{
+        //console.log(this.data.evtfinal);
        this.el.emit(this.data.evtfinal);
-       this.state=1;
+       this.state=100000;
      }
     },
  

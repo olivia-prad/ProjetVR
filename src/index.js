@@ -7,4 +7,6 @@ import "components/dropzone.js";
 import "components/navmesh-manager.js";
 import "components/toggle-event.js";
 import "components/wait-event.js";
-import "components/portal.js";
+import "components/timer.js";
+import "components/double-condition.js";
+import "components/level-completed.js";
