@@ -18,7 +18,7 @@
         <img id="wall" src="assets/textures/wall3.jpg" ></img>
         <img id="sign-img" src="assets/textures/panneau-3.jpg"></img>
         
-        <a-asset-item id="asset-door" src="assets/3d_objects/bunker_door_large/scene.gltf"></a-asset-item>
+        <a-asset-item id="asset-door" src="assets/3d_objects/door/scene.gltf"></a-asset-item>
         <a-asset-item id="asset-bunk-bed" src="assets/3d_objects/bunk_bed/scene.gltf"></a-asset-item>
         <a-asset-item id="asset-metal_cabinet" src="assets/3d_objects/metal_cabinet/scene.gltf"></a-asset-item>
         <a-asset-item id="asset-desk" src="assets/3d_objects/metal_table/scene.gltf"></a-asset-item>
@@ -195,9 +195,9 @@
         level-completed="finished: false ; pageHTML: laboratory.html"
         hover-highlighter
         gltf-model="#asset-door" 
-        position="2 0.03 1.44" 
-        scale="1,1.05,1" 
-        rotation="0 180 0"
+        position="0 1.16 1.49" 
+        scale="0.01, 0.01, 0.01" 
+        rotation="0 90 0"
         sound="src: #sound-door-locked; on: click; volume: 1"
 
         listen-to="target: #backpack; event: grabbed; emit: ready; once: true"
