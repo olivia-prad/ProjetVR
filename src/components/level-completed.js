@@ -27,7 +27,7 @@ AFRAME.registerComponent('level-completed', {
 
      onEvent: function () {
       if(this.data.finished){
-         window.location.replace("http://chabloz.eu/public/Oli_Mich/dist/"+this.data.pageHTML);
+         window.location.replace("https://chabloz.eu/files/vrtest/Oli_Mich/dist/"+this.data.pageHTML);
       }
       else{
          console.log("not completed");
