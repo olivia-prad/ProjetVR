@@ -3,10 +3,10 @@
   <head>
     <meta charset="UTF-8">
     <title>Level -2</title>
-    <script src="https://aframe.io/releases/1.1.0/aframe.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
-    <script src="https://unpkg.com/aframe-event-set-component@3.0.3/dist/aframe-event-set-component.min.js"></script>
-    <script src="https://rawgit.com/fernandojsg/aframe-teleport-controls/master/dist/aframe-teleport-controls.min.js"></script>
+    <script src="https://aframe.io/releases/1.1.0/aframe.min.js" preload="auto"></script>
+    <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"preload="auto"></script>
+    <script src="https://unpkg.com/aframe-event-set-component@3.0.3/dist/aframe-event-set-component.min.js"preload="auto"></script>
+    <script src="https://rawgit.com/fernandojsg/aframe-teleport-controls/master/dist/aframe-teleport-controls.min.js"preload="auto"></script>
     <script src="https://recast-api.donmccurdy.com/aframe-inspector-plugin-recast.js"></script>
     <script src="bundle.js"></script>
   </head>
@@ -14,17 +14,17 @@
     <a-scene stats >
         <!-- chargements  --> 
         <a-assets>
-            <img id="asset-floor" src="assets/textures/FloorTile/FloorTileAmbientOcclusion.jpg" ></img>
-            <img id="asset-wall" src="assets/textures/white-wall1.jpg" ></img>
-            <img id="sign-img" src="assets/textures/panneau-2.jpg"></img>
+            <img id="asset-floor" src="assets/textures/FloorTile/FloorTileAmbientOcclusion.jpg" preload="auto"></img>
+            <img id="asset-wall" src="assets/textures/white-wall1.jpg" preload="auto"></img>
+            <img id="sign-img" src="assets/textures/panneau-2.jpg"preload="auto"></img>
           
-            <a-asset-item id="asset-door" src="assets/3d_objects/door/scene.gltf"></a-asset-item>
-            <a-asset-item id="asset-light" src="assets/3d_objects/bunker_light/scene.gltf"></a-asset-item>
-            <a-asset-item id="asset-switch" src="assets/3d_objects/light_switch/scene.gltf"></a-asset-item>
-            <a-asset-item id="asset-shelf" src="assets/3d_objects/rusty_shelf/scene.gltf"></a-asset-item>
-            <a-asset-item id="asset-table" src="assets/3d_objects/table_metal/scene.gltf"></a-asset-item>
-            <a-asset-item id="asset-medicine" src="assets/3d_objects/medicine/scene.gltf"></a-asset-item>
-            <a-asset-item id="asset-chemestry" src="assets/3d_objects/chemistry_set/scene.gltf"></a-asset-item>
+            <a-asset-item id="asset-door" src="assets/3d_objects/door/scene.gltf"preload="auto"></a-asset-item>
+            <a-asset-item id="asset-light" src="assets/3d_objects/bunker_light/scene.gltf"preload="auto"></a-asset-item>
+            <a-asset-item id="asset-switch" src="assets/3d_objects/light_switch/scene.gltf"preload="auto"></a-asset-item>
+            <a-asset-item id="asset-shelf" src="assets/3d_objects/rusty_shelf/scene.gltf"preload="auto"></a-asset-item>
+            <a-asset-item id="asset-table" src="assets/3d_objects/table_metal/scene.gltf"preload="auto"></a-asset-item>
+            <a-asset-item id="asset-medicine" src="assets/3d_objects/medicine/scene.gltf"preload="auto"></a-asset-item>
+            <a-asset-item id="asset-chemestry" src="assets/3d_objects/chemistry_set/scene.gltf"preload="auto"></a-asset-item>
 
             <a-asset-item id="sound-pick" response-type="arraybuffer" src="assets/audio/qubodupItemHandling/qubodupItemHandling3.wav" preload="auto"></a-asset-item>
             <a-asset-item id="sound-left" response-type="arraybuffer" src="assets/audio/qubodupItemHandling/qubodupItemHandling1.wav" preload="auto"></a-asset-item>

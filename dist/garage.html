@@ -24,11 +24,11 @@
       <!-- navmesh -->
       <!-- <a-asset-item id="navmesh-spawn" src="assets/navmesh_spawn_zone.gltf"></a-asset-item> -->
       <!-- img  -->
-      <img id="stairs" src="assets/textures/stairs.jpg"></img>
-      <img id="asphalt" src="assets/textures/asphalt.png"></img>
-      <img id="grass" src="assets/textures/grass.png"></img>
-      <img id="sign-img" src="assets/textures/panneau-0.jpg"></img>
-      <img id="sign-final-img" src="assets/textures/panneau-end.jpg"></img>
+      <img id="stairs" src="assets/textures/stairs.jpg" preload="auto"></img>
+      <img id="asphalt" src="assets/textures/asphalt.png" preload="auto"></img>
+      <img id="grass" src="assets/textures/grass.png" preload="auto"></img>
+      <img id="sign-img" src="assets/textures/panneau-0.jpg"preload="auto"></img>
+      <img id="sign-final-img" src="assets/textures/panneau-end.jpg"preload="auto"></img>
 
 
 
@@ -39,25 +39,26 @@
       <a-asset-item id="pick_sound" response-type="arraybuffer" src="assets/audio/pick.wav" preload="auto"></a-asset-item>
       
       <!-- objects  -->
-      <a-asset-item id="car" src="assets/3d_objects/car/scene.gltf"></a-asset-item>
-      <a-asset-item id="barrel" src="assets/3d_objects/barrel/scene.gltf"></a-asset-item>
-      <a-asset-item id="door" src="assets/3d_objects/door2/scene.gltf"></a-asset-item>
-      <a-asset-item id="garage" src="assets/3d_objects/garage/scene.gltf"></a-asset-item>
-      <a-asset-item id="light" src="assets/3d_objects/light/scene.gltf"></a-asset-item>
-      <a-asset-item id="crow" src="assets/3d_objects/crow/scene.gltf"></a-asset-item>
-      <a-asset-item id="soda" src="assets/3d_objects/soda/scene.gltf"></a-asset-item>
-      <a-asset-item id="key" src="assets/3d_objects/key/scene.gltf"></a-asset-item>
-      <a-asset-item id="electric" src="assets/3d_objects/electric_box/scene.gltf"></a-asset-item>
-      <a-asset-item id="fuel" src="assets/3d_objects/fuel/scene.gltf"></a-asset-item>
-      <a-asset-item id="bread" src="assets/3d_objects/bread/scene.gltf"></a-asset-item>
-      <a-asset-item id="shelf" src="assets/3d_objects/shelf/scene.gltf"></a-asset-item>
-      <a-asset-item id="tree" src="assets/3d_objects/tree/scene.gltf"></a-asset-item>
-      <a-asset-item id="tree2" src="assets/3d_objects/tree2/scene.gltf"></a-asset-item>
-      <a-asset-item id="cloud" src="assets/3d_objects/cloud/scene.gltf"></a-asset-item>
-
-
+      <a-asset-item id="car" src="assets/3d_objects/car/scene.gltf" preload="auto"></a-asset-item>
+      <a-asset-item id="barrel" src="assets/3d_objects/barrel/scene.gltf" preload="auto"></a-asset-item>
+      <a-asset-item id="door" src="assets/3d_objects/door2/scene.gltf" preload="auto"></a-asset-item>
+      <a-asset-item id="garage" src="assets/3d_objects/garage/scene.gltf" preload="auto"></a-asset-item>
+      <a-asset-item id="light" src="assets/3d_objects/light/scene.gltf" preload="auto"></a-asset-item>
+      <a-asset-item id="crow" src="assets/3d_objects/crow/scene.gltf" preload="auto"></a-asset-item>
+      <a-asset-item id="soda" src="assets/3d_objects/soda/scene.gltf" preload="auto"></a-asset-item>
+      <a-asset-item id="key" src="assets/3d_objects/key/scene.gltf"preload="auto"></a-asset-item>
+      <a-asset-item id="electric" src="assets/3d_objects/electric_box/scene.gltf "preload="auto"></a-asset-item>
+      <a-asset-item id="fuel" src="assets/3d_objects/fuel/scene.gltf"preload="auto"></a-asset-item>
+      <a-asset-item id="bread" src="assets/3d_objects/bread/scene.gltf"preload="auto"></a-asset-item>
+      <a-asset-item id="shelf" src="assets/3d_objects/shelf/scene.gltf"preload="auto"></a-asset-item>
+      <a-asset-item id="tree" src="assets/3d_objects/tree/scene.gltf"preload="auto"></a-asset-item>
+      <a-asset-item id="tree2" src="assets/3d_objects/tree2/scene.gltf"preload="auto"></a-asset-item>
+      <a-asset-item id="cloud" src="assets/3d_objects/cloud/scene.gltf"preload="auto"></a-asset-item>
 
     </a-assets>
+
+
+
     <a-sky 
     color="#a3d0ed"
 ></a-sky>
@@ -101,7 +102,7 @@
     double-condition="cond1: key-grabbed; cond2: fuel-grabbed; result: ready-to-go"
     double-condition__2="cond1: ready-to-go; cond2: click; result: car-going"
     sound="src: #car_sound; on: click"
-    animation="property: object3D.position.x; to: -33 ; dur: 10000; delay: 2000; startEvents:car-going; easing: linear;"
+    animation="property: object3D.position.x; to: -33 ; dur: 10000; delay: 2000; startEvents:car-going; easing: linear; once: true"
     ></a-entity>
  
     <a-entity 
@@ -166,7 +167,7 @@
     <!-- autre objets  -->
 
     <a-entity gltf-model="#light" position="0 3.5 0" scale="0.01, 0.01, 0.01" rotation="90 0 0"></a-entity>
-    <a-entity gltf-model="#barrel" position="-2 0 0.3" scale="0.01, 0.01, 0.01" rotation="0 180 0"></a-entity>
+    <a-entity id="barrel_entity" gltf-model="#barrel" position="-2 0.5 0.3" scale="0.75, 0.75, 0.75" rotation="0 180 0"></a-entity>
     <a-entity gltf-model="#electric" position="-3.5 0 1.2" scale="0.023, 0.023, 0.023" rotation="0 180 0"></a-entity>
     <a-entity gltf-model="#soda" position="2.4  1.65  -1" scale="0.015, 0.015, 0.015" rotation="0 30 0"></a-entity>    
     <a-entity gltf-model="#shelf" position="2.44 1.5 -1" scale="0.4, 0.4, 0.4" rotation="0 -90 0"></a-entity>
@@ -224,8 +225,8 @@
     movement-controls="constrainToNavMesh: true;"
     position="-0.5 0 +1"
     listen-to="target: #car-entity; event: car-going; emit: trip; once: true;"
-    event-set__trip="_event: trip; position: -0.5 -0.5 -1.1; rotation: 0 90 0"
-    animation="property: object3D.position.x; to: -30.5 ; dur: 10000; delay: 2000; easing: linear; startEvents: trip"
+    event-set__trip="_event: trip; position: -0.5 -0.5 -1.1; rotation: 0 90 0; once:true"
+    animation="property: object3D.position.x; to: -30.5 ; dur: 10000; delay: 2000; easing: linear; startEvents: trip; once:true"
     >
       <a-entity id="head" position="0 1.7 0" camera look-controls="pointerLockEnabled: true">
         <a-entity id="eyes" geometry="primitive: circle; radius: 0.0005" material="color: black" position="0 0 -0.1"
