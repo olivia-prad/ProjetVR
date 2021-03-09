@@ -1,5 +1,5 @@
 AFRAME.registerComponent('double-condition', {
-
+   multiple: true,
     schema: {
        cond1: {
           type: 'string'
@@ -25,9 +25,11 @@ AFRAME.registerComponent('double-condition', {
     onEvent: function (cond) {
 
      if(cond == 'cond1'){
+         console.log("cond 1 ok");
         this.cond1= true;
      }
      if(cond == 'cond2'){
+      console.log("cond 2 ok");
         this.cond2= true;
      }
      if(this.cond1 && this.cond2){

@@ -2,7 +2,7 @@
 <html lang="fr">
   <head>
     <meta charset="UTF-8">
-    <title>IM VR</title>
+    <title>Level -3</title>
     <script src="https://aframe.io/releases/1.1.0/aframe.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
     <script src="https://unpkg.com/aframe-event-set-component@3.0.3/dist/aframe-event-set-component.min.js"></script>
@@ -16,6 +16,7 @@
       <a-assets>
         <img id="floor" src="assets/textures/treadplate3.jpg" ></img>
         <img id="wall" src="assets/textures/wall3.jpg" ></img>
+        <img id="sign-img" src="assets/textures/panneau-3.jpg"></img>
         
         <a-asset-item id="asset-door" src="assets/3d_objects/bunker_door_large/scene.gltf"></a-asset-item>
         <a-asset-item id="asset-bunk-bed" src="assets/3d_objects/bunk_bed/scene.gltf"></a-asset-item>
@@ -35,6 +36,7 @@
         <a-asset-item id="sound-zipper" response-type="arraybuffer" src="assets/audio/zipper.wav" preload="auto"></a-asset-item>
         <a-asset-item id="sound-door-locked" response-type="arraybuffer" src="assets/audio/DoorLockSounds/LockedDoorHandleJiggle.wav" preload="auto"></a-asset-item>
         <a-asset-item id="sound-door-open" response-type="arraybuffer" src="assets/audio/DoorLockSounds/DoorOpen.wav" preload="auto"></a-asset-item>
+        <a-asset-item id="sound-fall" response-type="arraybuffer" src="assets/audio/screwfall.mp3" preload="auto"></a-asset-item>
       </a-assets>
 
       <!-- structure  -->
@@ -52,6 +54,14 @@
       <a-entity gltf-model="#asset-desk" position="-0.45 0.44 -1" scale="1 1 1" rotation="0 270 0"></a-entity>
       <a-entity gltf-model="#asset-boot" position="0.7 0 0" scale="1 1 1" rotation="0 120 0"></a-entity>
       <a-entity gltf-model="#asset-boot" position="0.7 0.058 0.16" scale="1 1 1" rotation="10 120 100"></a-entity>
+      <a-plane 
+        id="sign" 
+        rotation="0 0 0" 
+        position="-0.488 1.7 -1.499" 
+        material="shader: flat; src: #sign-img; " 
+        height="0.6" 
+        width="1">
+      </a-plane>
 
 
       <!-- lights  -->
@@ -87,7 +97,7 @@
         rotation="-6 270 0"
         hover-highlighter
         timer="evtbase:click; timer: 300; evtfinal:onFloor"
-        sound="src: #sound-switch; on: onFloor; volume: 1"
+        sound="src: #sound-fall; on: onFloor; volume: 1"
         animation__pos="property:position; to: -1.353 0.036 0.06; dur:300; startEvents:click"
         animation__rot="property:rotation; to: -6 300 0; dur:300; startEvents:click">
       </a-entity>
@@ -99,7 +109,7 @@
         rotation="-3 270 0"
         hover-highlighter
         timer="evtbase:click; timer: 300; evtfinal:onFloor"
-        sound="src: #sound-switch; on: onFloor; volume: 1"
+        sound="src: #sound-fall; on: onFloor; volume: 1"
         animation__pos="property:position; to: -1.344 0.036 0.496; dur:300; startEvents:click"
         animation__rot="property:rotation; to: -3 220 0; dur:300; startEvents:click">
       </a-entity>
@@ -111,7 +121,7 @@
         rotation="4 270 0"
         hover-highlighter
         timer="evtbase:click; timer: 300; evtfinal:onFloor"
-        sound="src: #sound-switch; on: onFloor; volume: 1"
+        sound="src: #sound-fall; on: onFloor; volume: 1"
         animation__pos="property:position; to: -1.374 0.036 0.695; dur:300; startEvents:click"
         animation__rot="property:rotation; to: 4 150 0; dur:300; startEvents:click">
       </a-entity>
@@ -123,7 +133,7 @@
         rotation="4 270 0"
         hover-highlighter
         timer="evtbase:click; timer: 300; evtfinal:onFloor"
-        sound="src: #sound-switch; on: onFloor; volume: 1"
+        sound="src: #sound-fall; on: onFloor; volume: 1"
         animation__pos="property:position; to: -1.36 0.036 0.44; dur:300; startEvents:click"
         animation__rot="property:rotation; to: 4 190 0; dur:300; startEvents:click">
       </a-entity>
@@ -182,7 +192,7 @@
       <!-- Door  -->
       <a-entity 
         id="door"
-        level-completed="finished: false ; pageHTML: stage2.html"
+        level-completed="finished: false ; pageHTML: laboratory.html"
         hover-highlighter
         gltf-model="#asset-door" 
         position="2 0.03 1.44" 

@@ -1,5 +1,5 @@
 AFRAME.registerComponent('timer', {
-
+   multiple: true,
     schema: {
        evtbase: {
           type: 'string', 

@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8">
+    <title>Level -2</title>
+    <script src="https://aframe.io/releases/1.1.0/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
+    <script src="https://unpkg.com/aframe-event-set-component@3.0.3/dist/aframe-event-set-component.min.js"></script>
+    <script src="https://rawgit.com/fernandojsg/aframe-teleport-controls/master/dist/aframe-teleport-controls.min.js"></script>
+    <script src="https://recast-api.donmccurdy.com/aframe-inspector-plugin-recast.js"></script>
+    <script src="bundle.js"></script>
+  </head>
+  <body>
+    <a-scene stats >
+        <!-- chargements  --> 
+        <a-assets>
+            <img id="asset-floor" src="assets/textures/FloorTile/FloorTileAmbientOcclusion.jpg" ></img>
+            <img id="asset-wall" src="assets/textures/white-wall1.jpg" ></img>
+            <img id="sign-img" src="assets/textures/panneau-2.jpg"></img>
+          
+            <a-asset-item id="asset-door" src="assets/3d_objects/door/scene.gltf"></a-asset-item>
+            <a-asset-item id="asset-light" src="assets/3d_objects/bunker_light/scene.gltf"></a-asset-item>
+            <a-asset-item id="asset-switch" src="assets/3d_objects/light_switch/scene.gltf"></a-asset-item>
+            <a-asset-item id="asset-shelf" src="assets/3d_objects/rusty_shelf/scene.gltf"></a-asset-item>
+            <a-asset-item id="asset-table" src="assets/3d_objects/table_metal/scene.gltf"></a-asset-item>
+            <a-asset-item id="asset-medicine" src="assets/3d_objects/medicine/scene.gltf"></a-asset-item>
+            <a-asset-item id="asset-chemestry" src="assets/3d_objects/chemistry_set/scene.gltf"></a-asset-item>
+
+            <a-asset-item id="sound-pick" response-type="arraybuffer" src="assets/audio/qubodupItemHandling/qubodupItemHandling3.wav" preload="auto"></a-asset-item>
+            <a-asset-item id="sound-left" response-type="arraybuffer" src="assets/audio/qubodupItemHandling/qubodupItemHandling1.wav" preload="auto"></a-asset-item>
+            <a-asset-item id="sound-switch" response-type="arraybuffer" src="assets/audio/light_switch.wav" preload="auto"></a-asset-item>
+            <a-asset-item id="sound-door-locked" response-type="arraybuffer" src="assets/audio/DoorLockSounds/LockedDoorHandleJiggle.wav" preload="auto"></a-asset-item>
+            <a-asset-item id="sound-door-open" response-type="arraybuffer" src="assets/audio/DoorLockSounds/DoorOpen.wav" preload="auto"></a-asset-item>
+            <a-asset-item id="sound-water" response-type="arraybuffer" src="assets/audio/Eau_qui_coule.wav" preload="auto"></a-asset-item>
+            <a-asset-item id="sound-water-pump" response-type="arraybuffer" src="assets/audio/pompe_a_eau.wav" preload="auto"></a-asset-item>
+        </a-assets>
+
+        <!-- structure  -->
+        <a-plane  position ="0.015 0.02 0.5" rotation="-90 0 0" color="#ff9999" height="2" width="2"></a-plane>
+        <a-plane rotation="-90 0 0" material=" src: #asset-floor; repeat: 3 3 ; " height="3" width="3"></a-plane>
+        <a-plane position ="-1.5 1.5 0" rotation="0 90 0" material=" src: #asset-wall; repeat: 6 6 ; " height="3" width="3"></a-plane>
+        <a-plane position ="+1.5 1.5 0" rotation="0 90 0" material=" src: #asset-wall; repeat: 6 6 ;side:double; " height="3" width="3" ></a-plane>
+        <a-plane position ="0 1.5 -1.5" rotation="0 0 0" material=" src: #asset-wall;  repeat: 6 6;side:double " height="3" width="3"></a-plane>
+        <a-plane position ="0 1.5 1.5" rotation="0 0 " material=" src: #asset-wall; repeat: 6 6 ;side:double " height="3" width="3"></a-plane>
+        <a-plane position ="0 3 0" rotation="90 0 0" material=" src: #asset-wall; repeat: 3 3 ;side:double " height="3" width="3"></a-plane>
+
+        <a-plane 
+        id="sign" 
+        rotation="0 270 0" 
+        position="1.499 1.850 0" 
+        material="shader: flat; src: #sign-img; " 
+        height="0.6" 
+        width="1">
+      </a-plane>
+
+        <!-- objects : statics --> 
+        <a-entity gltf-model="#asset-shelf" position="1.051 0 0.481" scale="0.001 0.001 0.001" rotation="0 0 0"></a-entity>
+        <a-entity gltf-model="#asset-shelf" position="1.051 0.511 0.481" scale="0.001 0.001 0.001" rotation="0 0 0"></a-entity>
+
+        <a-entity gltf-model="#asset-shelf" position="1.051 0 1.467" scale="0.001 0.001 0.001" rotation="0 0 0"></a-entity>
+        <a-entity gltf-model="#asset-shelf" position="1.051 0.511 1.467" scale="0.001 0.001 0.001" rotation="0 0 0"></a-entity>
+
+        <a-entity gltf-model="#asset-shelf" position="-1.44 0 1.467" scale="0.001 0.001 0.001" rotation="0 0 0"></a-entity>
+        <a-entity gltf-model="#asset-shelf" position="-1.44 0.511 1.467" scale="0.001 0.001 0.001" rotation="0 0 0"></a-entity>
+
+        <a-entity gltf-model="#asset-shelf" position="-1.44 0 0.481" scale="0.001 0.001 0.001" rotation="0 0 0"></a-entity>
+        <a-entity gltf-model="#asset-shelf" position="-1.44 0.511 0.481" scale="0.001 0.001 0.001" rotation="0 0 0"></a-entity>
+
+        <a-entity gltf-model="#asset-table" position="0 0.35 -1" scale="1.3 1.1 1.1" rotation="0 270 0"></a-entity>
+        <a-entity gltf-model="#asset-chemestry" position="-0.75 1 -1.2" scale="0.003 0.003 0.003" rotation="0 120 0"></a-entity>
+        <a-entity gltf-model="#asset-medicine" position="-1.33 1.38 1.33" scale="0.05 0.05 0.05" rotation="0 300 0"></a-entity>
+        <a-entity gltf-model="#asset-medicine" position="-1.30 1.38 1.20" scale="0.05 0.05 0.05" rotation="0 200 0"></a-entity>
+
+        <!-- lights  -->
+        <a-entity gltf-model="#asset-light" position="0 3 0" scale="0.008, 0.008, 0.008" rotation="90 0 0"></a-entity>
+        <a-entity id="ambiance" id="ambient-light"light="type: ambient; color: #FFF; intensity: 1" ></a-entity>
+        <a-entity id="lamp" light="type: point; color: #fbf4da; intensity: 3; distance: 7; decay: 6" position="0 2.5 0"></a-entity> 
+
+        <a-entity 
+            id="switch"
+            gltf-model="#asset-switch" 
+            position="-0.655 1.111 1.494" 
+            scale="0.04 0.04 0.04" 
+            rotation="-10 180 180"
+            hover-highlighter
+            sound="src: #sound_switch; on: click; volume: 1"
+            toggle-event="evtbase: click; evt1: switchOff; evt2: switchOn"
+            event-set__lightOn="_event:switchOn; _target: #lamp; light.intensity:3"
+            event-set__lightOff="_event:switchOff; _target: #lamp; light.intensity: 0"
+            event-set__lightOn2="_event:switchOn; _target: #ambiance; light.intensity: 1"
+            event-set__lightOff2="_event:switchOff; _target: #ambiance; light.intensity: 0.3">
+        </a-entity>
+  
+        <!-- night mode --> 
+        <a-entity
+            id="nightMode"
+            visible="false"
+            listen-to="target: #switch; event: switchOn; emit: nightModeOff"
+            event-set__nightModeOff="_event:nightModeOff; visible: false"
+            listen-to__NightMode="target: #switch; event: switchOff; emit: nightModeOn"
+            event-set__nightMode="_event:nightModeOn; visible: true">
+            <a-entity
+                id="ball1"
+                hover-highlighter
+                grabbable="target: #right-hand"
+                position="1.363 0.843 0.848"
+                geometry="primitive: sphere; radius: 0.02"
+                material="color: #4dff8b"
+                sound="src: #sound-pick; on: click; volume: 1">
+            </a-entity>
+            <a-entity
+                id="ball2"
+                hover-highlighter
+                grabbable="target: #right-hand"
+                position="1.203 0.843 -0.115"
+                geometry="primitive: sphere; radius: 0.02"
+                material="color: #ff5cd3"
+                sound="src: #sound-pick; on: click; volume: 1">
+            </a-entity>
+            <a-entity
+                id="ball3"
+                hover-highlighter
+                grabbable="target: #right-hand"
+                position="1.18 1.355 1.04"
+                geometry="primitive: sphere; radius: 0.02"
+                material="color: #00d9ff"
+                sound="src: #sound-pick; on: click; volume: 1">
+            </a-entity>
+            <a-entity
+                id="ball4"
+                hover-highlighter
+                grabbable="target: #right-hand"
+                position="1.2 0.843 1"
+                geometry="primitive: sphere; radius: 0.02"
+                material="color: #00ff59"
+                sound="src: #sound-pick; on: click; volume: 1">
+            </a-entity>
+            <a-entity
+                id="ball5"
+                hover-highlighter
+                grabbable="target: #right-hand"
+                position="1.16 1.355 0.057"
+                geometry="primitive: sphere; radius: 0.02"
+                material="color: #b980ff"
+                sound="src: #sound-pick; on: click; volume: 1">
+            </a-entity>
+            <a-entity
+                id="ball-red"
+                hover-highlighter
+                grabbable="target: #right-hand"
+                position="1.29 1.355 0.27"
+                geometry="primitive: sphere; radius: 0.02"
+                material="color: #ff0000;"
+                sound="src: #sound-pick; on: click; volume: 1">
+            </a-entity>
+            <a-entity
+                id="ball7"
+                hover-highlighter
+                grabbable="target: #right-hand"
+                position="1.17 1.355 -0.1"
+                geometry="primitive: sphere; radius: 0.02"
+                material="color: #fff700"
+                sound="src: #sound-pick; on: click; volume: 1">
+            </a-entity>
+            <a-entity
+                id="ball8"
+                hover-highlighter
+                grabbable="target: #right-hand"
+                position="1.24 1.355 0.7"
+                geometry="primitive: sphere; radius: 0.02"
+                material="color: #ffbc47"
+                sound="src: #sound-pick; on: click; volume: 1">
+            </a-entity>
+            <a-entity
+                id="ball9"
+                hover-highlighter
+                grabbable="target: #right-hand"
+                position="1.39 1.355 0"
+                geometry="primitive: sphere; radius: 0.02"
+                material="color: #00ff59"
+                sound="src: #sound-pick; on: click; volume: 1">
+            </a-entity>
+            <a-entity
+                id="ball10"
+                hover-highlighter
+                grabbable="target: #right-hand"
+                position="1.26 0.843 0.024"
+                geometry="primitive: sphere; radius: 0.02"
+                material="color: #8f96ff"
+                sound="src: #sound-pick; on: click; volume: 1">
+            </a-entity>
+            <a-entity
+                id="button-blue"
+                position="-1.484 1.603 0.6"
+                rotation="0 0 270"
+                sound="src: #sound-switch; on: click; volume: 1">
+                <a-cylinder 
+                    hover-highlighter
+                    color="#0000ff"
+                    height="0.03"
+                    radius="0.05">
+                </a-cylinder>
+                <a-box
+                    color="#303131" 
+                    depth="0.15" 
+                    height="0.02" 
+                    width="0.15"
+                    position="0 -0.017 0">
+                </a-box>
+            </a-entity>
+
+        </a-entity>
+            
+        <!-- tubes --> 
+        <a-entity
+            id="tube-blue"
+            position="-0.3 2.011 -1.378">
+             <a-entity
+                geometry="primitive: cylinder; height: 1.7; openEnded:true; radius:0.1; "
+                material="color: #677e7e; metalness:0.4; opacity:0.4;"
+                position="0 0.173 0">
+            </a-entity>
+            <a-entity
+                geometry="primitive: box; depth: 0.27; height:0.21; width:0.27;"
+                material="color: #303131; metalness:0.5;"
+                position="0 -0.756 0">
+            </a-entity>
+            <a-entity
+                id="liquid-blue"
+                geometry="primitive: cylinder; height: 0.010; radius:0.09; "
+                material="color: #0000ff; opacity:1;"
+                position="0 -0.656 0"
+                listen-to__button="target: #button-blue; event: click; emit: fill-blue; once: true"
+                animation__fill="property: geometry.height; to: 0.8; dur: 3000; startEvents: fill-blue"
+                animation__fillPos="property: position; to: 0 -0.3 0; dur: 3000; startEvents: fill-blue"
+                sound__fill="src: #sound-water; on: fill-blue; volume: 1;"
+                timer="evtbase:fill-blue; timer:3000; evtfinal:filled"
+
+                listen-to__purple="target: #tube-purple; event: mix-ready; emit: mixing; once: true"
+                sound__empty="src: #sound-water-pump; on: mixing; volume: 1;"
+                animation__empty="property: geometry.height; to: 0.010; dur: 3000; startEvents: mixing"
+                animation__emptyPos="property: position; to: 0 -0.656 0; dur: 3000; startEvents: mixing"> 
+            </a-entity>
+        </a-entity>
+
+        <a-entity
+            id="tube-purple"
+            position="0.2 2.011 -1.378">
+            <a-entity
+                geometry="primitive: cylinder; height: 1.7; openEnded:true; radius:0.1; "
+                material="color: #677e7e; metalness:0.4; opacity:0.4;"
+                position="0 0.173 0">
+            </a-entity>
+            <a-entity
+                geometry="primitive: box; depth: 0.27; height:0.21; width:0.27;"
+                material="color: #303131; metalness:0.5;"
+                position="0 -0.756 0">
+            </a-entity>
+            <a-entity
+                id="liquid-purple"
+                geometry="primitive: cylinder; height: 0.010; radius:0.09; "
+                material="color: #ae00ff; opacity:1;"
+                position="0 -0.656 0"
+                listen-to__blue="target: #tube-blue; event: filled; emit: filled-blue; once: true"
+                listen-to__red="target: #tube-red; event: filled; emit: filled-red; once: true"
+                double-condition="cond1: filled-blue; cond2: filled-red; result: mix-ready"
+
+                timer="evtbase:mix-ready; timer: 2000; evtfinal:mixing"
+                animation="property: geometry.height; to: 1.7;  dur: 3000; startEvents: mixing"
+                animation__pos="property: position; to: 0 0.17 0; dur: 3000; startEvents: mixing"
+                sound="src: #sound-water; on: mixing; volume: 1;"> 
+            </a-entity>
+        </a-entity>
+        <a-entity
+            id="tube-red"
+            position="0.7 2.011 -1.378">
+            <a-entity
+                geometry="primitive: cylinder; height: 1.7; openEnded:true; radius:0.1; "
+                material="color: #677e7e; metalness:0.4; opacity:0.4;"
+                position="0 0.173 0">
+            </a-entity>
+            <a-entity
+                geometry="primitive: box; depth: 0.27; height:0.21; width:0.27;"
+                material="color: #303131; metalness:0.5;"
+                position="0 -0.756 0">
+            </a-entity>
+            <a-entity
+                id="liquid-red"
+                geometry="primitive: cylinder; height: 0.010; radius:0.09; "
+                material="color: #ff0000; opacity:1;"
+                position="0 -0.656 0"
+                listen-to="target: #ball-red; event: dropped; emit: fill-red; once: true"
+                animation__fill="property: geometry.height; to: 0.8; dur: 3000; startEvents: fill-red"
+                animation__fillPos="property: position; to: 0 -0.3 0; dur: 3000; startEvents: fill-red"
+                sound__fill="src: #sound-water; on: fill-red; volume: 1;"
+                timer="evtbase:fill-red; timer: 3000; evtfinal:filled"
+
+                listen-to__purple="target: #tube-purple; event: mix-ready; emit: mixing; once: true"
+                sound__empty="src: #sound-water-pump; on: mixing; volume: 1;"
+                animation__empty="property: geometry.height; to: 0.010; dur: 3000; startEvents: mixing"
+                animation__emptyPos="property: position; to: 0 -0.656 0; dur: 3000; startEvents: mixing">
+            </a-entity>
+        </a-entity>
+
+        <!-- drop zone --> 
+        <a-entity 
+            id="drop-zone-red"
+            hover-highlighter
+            dropzone="offset: 0 -0.01 0; reset: true"
+            geometry="primitive: sphere; phiLength: 180; radius: 0.03"
+            material="color: #ff0000; side: double; metalness:0.4;"
+            position="0.7 1.041 -0.7"
+            sound="src: #sound-left; on: received; volume: 3;"
+            rotation="90 0 0">
+        </a-entity>
+        <a-entity
+            geometry="primitive: box; depth: 0.1; height:0.02; width:0.1;"
+            material="color: #303131; metalness:0.5;"
+            position="0.7 1 -0.7">
+        </a-entity>
+
+        <!-- door --> 
+        <a-entity 
+            id="door"
+            level-completed="finished: false; pageHTML: security.html"
+            hover-highlighter
+            gltf-model="#asset-door" 
+            position="0 1.16 1.49" 
+            scale="0.01 0.01 0.01" 
+            rotation="0 90 0"
+            sound__closed="src: #sound-door-locked; on: click; volume: 1"
+
+            listen-to="target: #tube-purple; event: mixing; emit: mixed; once: true"
+            timer="evtbase:mixed; timer: 4000; evtfinal:levelCompleted"
+            event-set__soundClosed="_event: levelCompleted; sound.volume:0"
+            sound__opened="src: #sound-door-open; on: levelCompleted; volume: 2"
+            event-set__open="_event: levelCompleted; level-completed.finished:true">
+        </a-entity>
+
+    
+        <!-- avatar  -->
+        <a-entity id="rig"
+        disable-in-vr="component: movement-controls"
+        movement-controls="constrainToNavMesh: true;"
+        position="0 0 1.2"
+      >
+
+        <a-entity id="head" position="0 1.7 0" camera look-controls="pointerLockEnabled: true">
+          <a-entity
+            id="eyes"
+            geometry="primitive: circle; radius: 0.0005"
+            material="color: black"
+            position="0 0 -0.1"
+            cursor
+            disable-in-vr="component: geometry"
+            disable-in-vr__cursor="component: cursor"
+            raycaster="objects: [hover-highlighter]; far: 1.5"
+          ></a-entity>
+        </a-entity>
+
+        <a-entity id="hands" position="0 0.9 0" bind-rotation="target: #head" disable-in-vr="component: bind-rotation" disable-in-vr__pos="component: position">
+          <a-entity id="left-hand"
+            position="-0.3 0 -0.3"
+            rotation="0 0 90"
+            bind-rotation="target: #head"
+            disable-in-vr="component: bind-rotation"
+            hand-controls="hand: left"
+            teleport-controls="cameraRig: #rig; collisionEntities: #nav-mesh-spawn; button: trigger; curveShootingSpeed: 8"
+          ></a-entity>
+          <a-entity id="right-hand"
+            position="0.3 0 -0.3"
+            rotation="0 0 -90"
+            bind-rotation="target: #head"
+            disable-in-vr="component: bind-rotation"
+            hand-controls="hand: right"
+            laser-controls="hand: right"
+            raycaster="far: 1.5; objects: [hover-highlighter]; showLine: true"
+          ></a-entity>
+        </a-entity>
+
+      </a-entity>
+
+    </a-scene>
+
+  </body>
+</html>

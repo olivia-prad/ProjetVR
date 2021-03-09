@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Level 0</title>
+  <script src="https://aframe.io/releases/1.1.0/aframe.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
+  <script src="https://unpkg.com/aframe-event-set-component@3.0.3/dist/aframe-event-set-component.min.js"></script>
+  <script src="https://rawgit.com/fernandojsg/aframe-teleport-controls/master/dist/aframe-teleport-controls.min.js"></script>
+  <script src="https://recast-api.donmccurdy.com/aframe-inspector-plugin-recast.js"></script>
+  <script src="bundle.js"></script>
+</head>
+
+<body>
+  <a-scene 
+  stats 
+  inspector-plugin-recast
+  fog="type: linear; color: #a3d0ed; near: 15; far: 25"
+  >
+    
+    <!-- assets  -->
+    <a-assets>
+      <!-- navmesh -->
+      <!-- <a-asset-item id="navmesh-spawn" src="assets/navmesh_spawn_zone.gltf"></a-asset-item> -->
+      <!-- img  -->
+      <img id="stairs" src="assets/textures/stairs.jpg"></img>
+      <img id="asphalt" src="assets/textures/asphalt.png"></img>
+      <img id="grass" src="assets/textures/grass.png"></img>
+      <img id="sign-img" src="assets/textures/panneau-0.jpg"></img>
+      <img id="sign-final-img" src="assets/textures/panneau-end.jpg"></img>
+
+
+
+      <!-- sounds  -->
+      <a-asset-item id="crow_sound" response-type="arraybuffer" src="assets/audio/crow.wav" preload="auto"></a-asset-item>
+      <a-asset-item id="outdoor_sound" response-type="arraybuffer" src="assets/audio/outdoor.mp3" preload="auto"></a-asset-item>
+      <a-asset-item id="car_sound" response-type="arraybuffer" src="assets/audio/engine_start.wav" preload="auto"></a-asset-item>
+      <a-asset-item id="pick_sound" response-type="arraybuffer" src="assets/audio/pick.wav" preload="auto"></a-asset-item>
+      
+      <!-- objects  -->
+      <a-asset-item id="car" src="assets/3d_objects/car/scene.gltf"></a-asset-item>
+      <a-asset-item id="barrel" src="assets/3d_objects/barrel/scene.gltf"></a-asset-item>
+      <a-asset-item id="door" src="assets/3d_objects/door2/scene.gltf"></a-asset-item>
+      <a-asset-item id="garage" src="assets/3d_objects/garage/scene.gltf"></a-asset-item>
+      <a-asset-item id="light" src="assets/3d_objects/light/scene.gltf"></a-asset-item>
+      <a-asset-item id="crow" src="assets/3d_objects/crow/scene.gltf"></a-asset-item>
+      <a-asset-item id="soda" src="assets/3d_objects/soda/scene.gltf"></a-asset-item>
+      <a-asset-item id="key" src="assets/3d_objects/key/scene.gltf"></a-asset-item>
+      <a-asset-item id="electric" src="assets/3d_objects/electric_box/scene.gltf"></a-asset-item>
+      <a-asset-item id="fuel" src="assets/3d_objects/fuel/scene.gltf"></a-asset-item>
+      <a-asset-item id="bread" src="assets/3d_objects/bread/scene.gltf"></a-asset-item>
+      <a-asset-item id="shelf" src="assets/3d_objects/shelf/scene.gltf"></a-asset-item>
+      <a-asset-item id="tree" src="assets/3d_objects/tree/scene.gltf"></a-asset-item>
+      <a-asset-item id="tree2" src="assets/3d_objects/tree2/scene.gltf"></a-asset-item>
+      <a-asset-item id="cloud" src="assets/3d_objects/cloud/scene.gltf"></a-asset-item>
+
+
+
+    </a-assets>
+    <a-sky 
+    color="#a3d0ed"
+></a-sky>
+
+
+<a-entity  gltf-model="#cloud" position="-8 15 -10" scale="0.005, 0.005, 0.005" rotation="0 0 0"></a-entity>
+<a-entity  gltf-model="#cloud" position="-24 8 17" scale="0.009, 0.009, 0.009" rotation="0 0 0"></a-entity>
+<a-entity  gltf-model="#cloud" position="-11 11 8" scale="0.005, 0.005, 0.005" rotation="0 0 0"></a-entity>
+<a-entity  gltf-model="#cloud" position="-24 5 8" scale="0.005, 0.005, 0.005" rotation="0 0 0"></a-entity>
+<a-entity  gltf-model="#cloud" position="-15 9 -18" scale="0.005, 0.005, 0.005" rotation="0 0 0"></a-entity>
+<a-entity  gltf-model="#cloud" position="-25  10 -15" scale="0.005, 0.005, 0.005" rotation="0 0 0"></a-entity>
+<a-entity  gltf-model="#cloud" position="-18 8 0" scale="0.005, 0.005, 0.005" rotation="0 0 0"></a-entity>
+<a-entity  gltf-model="#cloud" position="-23 15 -2" scale="0.005, 0.005, 0.005" rotation="0 0 0"></a-entity>
+<a-entity  gltf-model="#cloud" position="-25  8 15" scale="0.005, 0.005, 0.005" rotation="0 0 0"></a-entity>
+
+
+<a-sound src="#outdoor_sound" autoplay="true" loop="true" volume="0.2"></a-sound>
+
+    <a-plane position="-19 -0.1 -1.5" rotation="-90 0 0" material="shader: flat; src: #asphalt; repeat: 40 2 ;" height="3" width="30"></a-plane>
+    <a-plane position="0 -0.15 -1.5" rotation="-90 0 0" material="shader: flat; src: #grass; repeat: 35 25 ;"color="green" height="50" width="70"></a-plane>
+
+    <!-- structure de l'étage  -->
+    <!-- <a-plane position="0 0 -0.5" rotation="-90 0 0" color="gray" height="3" width="3"></a-plane>
+    <a-plane position="0 0.1 -0.5" rotation="-90 0 0" color="red" height="2" width="2"></a-plane> -->
+    <a-plane position="1.53 1.17 1.48" rotation="0 180 0" material="shader: flat; src: #stairs ; " height="2.4" width="1.3"> </a-plane>
+
+    <a-entity  gltf-model="#garage" position="-1 -0.05 -0.9" scale="0.0115, 0.0115, 0.0115" rotation="0 180 0"></a-entity>
+
+
+
+    <a-entity     
+    hover-highlighter  
+    id="car-entity" 
+    gltf-model="#car" 
+    position="-3 0 -1.5" 
+    scale="0.013, 0.013, 0.013" 
+    rotation="0 -90 0"
+
+    listen-to__keys="target: #key_entity; event: grabbed; emit: key-grabbed; once: true"
+    listen-to__fuel="target: #fuel-entity; event: grabbed; emit: fuel-grabbed; once: true"
+    double-condition="cond1: key-grabbed; cond2: fuel-grabbed; result: ready-to-go"
+    double-condition__2="cond1: ready-to-go; cond2: click; result: car-going"
+    sound="src: #car_sound; on: click"
+    animation="property: object3D.position.x; to: -33 ; dur: 10000; delay: 2000; startEvents:car-going; easing: linear;"
+    ></a-entity>
+ 
+    <a-entity 
+    id="fuel-entity"      
+    hover-highlighter  
+    grabbable="target: #right-hand" 
+    gltf-model="#fuel" 
+    position="1.9 0.3 -2" 
+    scale="0.25, 0.25, 0.25" 
+    rotation="0 90 0"
+    sound="src: #pick_sound; on: click;"
+    ></a-entity>
+
+    <a-entity   
+    id="bread_entity"   
+    hover-highlighter  
+    gltf-model="#bread" 
+    grabbable="target: #left-hand" 
+    position="2.4 1.57 -0.8" 
+    scale="0.0015, 0.0015, 0.0015" 
+    rotation="0 90 0"
+    sound="src: #pick_sound; on: click;"
+    ></a-entity>
+
+    <a-entity  
+    id="key_entity"   
+    hover-highlighter      
+    grabbable="target: #left-hand; active:false"
+    gltf-model="#key" 
+    position="-1.3 1.35 1.2" 
+    scale="0.8,0.8, 0.8" 
+    rotation="-90 0 0"
+    sound="src: #pick_sound; on: click; volume:0;"
+    listen-to__bread="target: #bread_entity; event: grabbed; emit: bread-grabbed"
+    double-condition="cond1: bread-grabbed; cond2: click; result: grab-keys"
+    event-set__soundKeys="_event: grab-keys; sound.volume:1"
+    event-set__keys="_event: bread-grabbed; grabbable.active:true "
+    ></a-entity>
+
+    <a-entity   
+    hover-highlighter  
+    sound="src: #crow_sound; on: click" 
+    gltf-model="#crow" 
+    position="-1.3 1.16 1.4" 
+    scale="0.005, 0.005, 0.005" 
+    rotation="0 90 0"
+    listen-to="target: #bread_entity; event: grabbed; emit: nice-crow"
+    event-set__soundClosed="_event: nice-crow; sound.volume:0"
+    ></a-entity>
+<!-- 
+    <a-entity      
+    hover-highlighter 
+    gltf-model="#broom" 
+    position="0 0.8 1.2" 
+    scale="0.8, 0.8, 0.8" 
+    rotation="-80 0 0"
+    grabbable="target: #right-hand"
+    ></a-entity> -->
+
+
+
+    <!-- autre objets  -->
+
+    <a-entity gltf-model="#light" position="0 3.5 0" scale="0.01, 0.01, 0.01" rotation="90 0 0"></a-entity>
+    <a-entity gltf-model="#barrel" position="-2 0 0.3" scale="0.01, 0.01, 0.01" rotation="0 180 0"></a-entity>
+    <a-entity gltf-model="#electric" position="-3.5 0 1.2" scale="0.023, 0.023, 0.023" rotation="0 180 0"></a-entity>
+    <a-entity gltf-model="#soda" position="2.4  1.65  -1" scale="0.015, 0.015, 0.015" rotation="0 30 0"></a-entity>    
+    <a-entity gltf-model="#shelf" position="2.44 1.5 -1" scale="0.4, 0.4, 0.4" rotation="0 -90 0"></a-entity>
+
+    <a-entity gltf-model="#tree" position="-7  0.1 3" scale="0.004, 0.004, 0.004" rotation="0 0 0"></a-entity>
+    <a-entity gltf-model="#tree2" position="-4  0.1 7" scale="0.002, 0.002, 0.002" rotation="0 0 0"></a-entity>
+    <a-entity gltf-model="#tree" position="-13  0.1 -3" scale="0.004, 0.004, 0.004" rotation="0 0 0"></a-entity>
+    <a-entity gltf-model="#tree" position="-5  0.1 -9" scale="0.006, 0.006, 0.006" rotation="0 0 0"></a-entity>
+    <a-entity gltf-model="#tree" position="-15  0.1 1" scale="0.004, 0.004, 0.004" rotation="0 0 0"></a-entity>
+    <a-entity gltf-model="#tree" position="19  0.1 4" scale="0.006, 0.006, 0.006" rotation="0 0 0"></a-entity>
+    <a-entity gltf-model="#tree2" position="-10  0.1 -8" scale="0.002, 0.002, 0.002" rotation="0 0 0"></a-entity>
+    <a-entity gltf-model="#tree" position="-18  0.1 -6" scale="0.006, 0.006, 0.006" rotation="0 0 0"></a-entity>
+    <a-entity gltf-model="#tree" position="-6  0.1 -3" scale="0.007, 0.007, 0.007" rotation="0 0 0"></a-entity>
+    <a-entity gltf-model="#tree" position="-8  0.1 6" scale="0.006, 0.006, 0.006" rotation="0 0 0"></a-entity>
+    <a-entity gltf-model="#tree" position="-23  0.1 4" scale="0.004, 0.004, 0.004" rotation="0 0 0"></a-entity>
+    <a-entity gltf-model="#tree2" position="-18  0.1 8" scale="0.002, 0.002, 0.002" rotation="0 0 0"></a-entity>
+
+    <a-plane 
+        id="sign-final" 
+        rotation="0 90 0" 
+        position="-32 1.55 -1.3" 
+        material="shader: flat; src: #sign-final-img; " 
+        height="0.6" 
+        width="1">
+    </a-plane>
+    <a-plane 
+        id="sign" 
+        rotation="0 180 0" 
+        position="-0.074 1.7 1.392" 
+        material="shader: flat; src: #sign-img; " 
+        height="0.6" 
+        width="1">
+    </a-plane>
+
+
+
+    <!-- lumières -->
+
+    <a-entity position="0 1 0" light="type: ambient; color: #FFFFFF; intensity: 1.2" ></a-entity>
+    <!-- <a-entity position="0 2.38 0" light="type: point; color: #FFFFF; intensity: 1" ></a-entity> -->
+
+
+    <!-- <a-entity navmesh-manager="navmesh: #nav-mesh-spawn"
+    event-set__access-one="_event: accces-one; navmesh-manager.navmesh: #nav-mesh-spawn-main"
+    listen-to__access-one="target: #switch-spawn; event: click; emit: accces-one; once: true"
+    event-set__access-two="_event: accces-two; navmesh-manager.navmesh: #nav-mesh-full"
+    listen-to__access-two="target: #drop-zone; event: received; emit: accces-two; once: true">
+  </a-entity> -->
+
+    <!-- avatar  -->
+
+    <a-entity 
+    id="rig" 
+    disable-in-vr="component: movement-controls" 
+    movement-controls="constrainToNavMesh: true;"
+    position="-0.5 0 +1"
+    listen-to="target: #car-entity; event: car-going; emit: trip; once: true;"
+    event-set__trip="_event: trip; position: -0.5 -0.5 -1.1; rotation: 0 90 0"
+    animation="property: object3D.position.x; to: -30.5 ; dur: 10000; delay: 2000; easing: linear; startEvents: trip"
+    >
+      <a-entity id="head" position="0 1.7 0" camera look-controls="pointerLockEnabled: true">
+        <a-entity id="eyes" geometry="primitive: circle; radius: 0.0005" material="color: black" position="0 0 -0.1"
+          cursor disable-in-vr="component: geometry" disable-in-vr__cursor="component: cursor"
+          raycaster="objects: [hover-highlighter]; far: 1.5"></a-entity>
+      </a-entity>
+
+      <a-entity id="hands" position="0 0.9 0" bind-rotation="target: #head" disable-in-vr="component: bind-rotation"
+        disable-in-vr__pos="component: position">
+        <a-entity id="left-hand" position="-0.3 0 -0.3" rotation="0 0 90" bind-rotation="target: #head"
+          disable-in-vr="component: bind-rotation" hand-controls="hand: left"
+          teleport-controls="cameraRig: #rig; collisionEntities: #nav-mesh-spawn; button: trigger; curveShootingSpeed: 8">
+        </a-entity>
+        <a-entity id="right-hand" position="0.3 0 -0.3" rotation="0 0 -90" bind-rotation="target: #head"
+          disable-in-vr="component: bind-rotation" hand-controls="hand: right" 
+          raycaster="far: 1.5; objects: [hover-highlighter]; showLine: true"></a-entity>
+      </a-entity>
+
+    </a-entity>
+
+  </a-scene>
+
+</body>
+
+</html>
