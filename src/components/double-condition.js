@@ -15,7 +15,7 @@ AFRAME.registerComponent('double-condition', {
     },
  
     init: function () {
-       console.log("doublecondition-init");
+       //console.log("doublecondition-init");
        this.cond1= false;
        this.cond2=false;
        this.el.addEventListener(this.data.cond1, ()=>{this.onEvent('cond1')});
@@ -25,11 +25,11 @@ AFRAME.registerComponent('double-condition', {
     onEvent: function (cond) {
 
      if(cond == 'cond1'){
-         console.log("cond 1 ok");
+      //console.log("cond 1 ok");
         this.cond1= true;
      }
      if(cond == 'cond2'){
-      console.log("cond 2 ok");
+      //console.log("cond 2 ok");
         this.cond2= true;
      }
      if(this.cond1 && this.cond2){

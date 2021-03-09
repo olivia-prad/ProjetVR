@@ -56,9 +56,6 @@
       <a-asset-item id="cloud" src="assets/3d_objects/cloud/scene.gltf"preload="auto"></a-asset-item>
 
     </a-assets>
-
-
-
     <a-sky 
     color="#a3d0ed"
 ></a-sky>
@@ -100,9 +97,9 @@
     listen-to__keys="target: #key_entity; event: grabbed; emit: key-grabbed; once: true"
     listen-to__fuel="target: #fuel-entity; event: grabbed; emit: fuel-grabbed; once: true"
     double-condition="cond1: key-grabbed; cond2: fuel-grabbed; result: ready-to-go"
-    double-condition__2="cond1: ready-to-go; cond2: click; result: car-going"
+    a-then-b="cond1: ready-to-go; cond2: click; result: car-going"
     sound="src: #car_sound; on: click"
-    animation="property: object3D.position.x; to: -33 ; dur: 10000; delay: 2000; startEvents:car-going; easing: linear; once: true"
+    animation="property: object3D.position.x; to: -33 ; dur: 10000; delay: 2000; startEvents:car-going; easing: linear;"
     ></a-entity>
  
     <a-entity 
@@ -226,7 +223,7 @@
     position="-0.5 0 +1"
     listen-to="target: #car-entity; event: car-going; emit: trip; once: true;"
     event-set__trip="_event: trip; position: -0.5 -0.5 -1.1; rotation: 0 90 0; once:true"
-    animation="property: object3D.position.x; to: -30.5 ; dur: 10000; delay: 2000; easing: linear; startEvents: trip; once:true"
+    animation="property: object3D.position.x; to: -30.5 ; dur: 10000; delay: 2000; easing: linear; startEvents: trip;"
     >
       <a-entity id="head" position="0 1.7 0" camera look-controls="pointerLockEnabled: true">
         <a-entity id="eyes" geometry="primitive: circle; radius: 0.0005" material="color: black" position="0 0 -0.1"

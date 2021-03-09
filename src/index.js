@@ -10,3 +10,4 @@ import "components/wait-event.js";
 import "components/timer.js";
 import "components/double-condition.js";
 import "components/level-completed.js";
+import "components/a-then-b.js";
