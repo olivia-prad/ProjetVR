@@ -49,8 +49,6 @@ old table: https://sketchfab.com/3d-models/old-metal-table-low-poly-92a14c8d231b
 
 knife: https://sketchfab.com/3d-models/combat-knife-48e00da7aeb94530a5d0e0c3d58ca274
 
-stool: https://sketchfab.com/3d-models/old-stool-dcf46cf5b40341d1b69d3ef439040714
-
 nail: https://sketchfab.com/3d-models/nail-lowpoly-fe912124f7414556aa474d13ce6dd13b
 
 backpack: https://sketchfab.com/3d-models/military-tactical-backpack-9fa2da2c42234b58896e8d23393cac24
