@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8">
+    <title>Level -3</title>
+    <script src="https://aframe.io/releases/1.1.0/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
+    <script src="https://unpkg.com/aframe-event-set-component@3.0.3/dist/aframe-event-set-component.min.js"></script>
+    <script src="https://rawgit.com/fernandojsg/aframe-teleport-controls/master/dist/aframe-teleport-controls.min.js"></script>
+    <script src="https://recast-api.donmccurdy.com/aframe-inspector-plugin-recast.js"></script>
+    <script src="bundle.js"></script>
+  </head>
+  <body>
+    <a-scene stats >
+      <!-- chargements  --> 
+      <a-assets>
+        <img id="floor" src="assets/textures/treadplate3.jpg" preload="auto" ></img>
+        <img id="wall" src="assets/textures/wall3.jpg" preload="auto" ></img>
+        <img id="sign-img" src="assets/textures/panneau-3.jpg" preload="auto"></img>
+        
+        <a-asset-item id="asset-door" src="assets/3d_objects/door/scene.gltf" preload="auto"></a-asset-item>
+        <a-asset-item id="asset-bunk-bed" src="assets/3d_objects/bunk_bed/scene.gltf" preload="auto"></a-asset-item>
+        <a-asset-item id="asset-metal_cabinet" src="assets/3d_objects/metal_cabinet/scene.gltf" preload="auto"></a-asset-item>
+        <a-asset-item id="asset-desk" src="assets/3d_objects/metal_table/scene.gltf" preload="auto"></a-asset-item>
+        <a-asset-item id="asset-nail" src="assets/3d_objects/nail/scene.gltf" preload="auto"></a-asset-item>
+        <a-asset-item id="asset-backpack" src="assets/3d_objects/backpack/scene.gltf" preload="auto"></a-asset-item>
+        <a-asset-item id="asset-knife" src="assets/3d_objects/knife/scene.gltf" preload="auto"></a-asset-item>
+        <a-asset-item id="asset-bottle" src="assets/3d_objects/metal_bottle/scene.gltf" preload="auto"></a-asset-item>
+        <a-asset-item id="asset-light" src="assets/3d_objects/bunker_light/scene.gltf" preload="auto"></a-asset-item>
+        <a-asset-item id="asset-boot" src="assets/3d_objects/boot/scene.gltf" preload="auto"></a-asset-item>
+        <a-asset-item id="asset-switch" src="assets/3d_objects/light_switch/scene.gltf" preload="auto"></a-asset-item>
+
+        <a-asset-item id="sound-pick" response-type="arraybuffer" src="assets/audio/qubodupItemHandling/qubodupItemHandling3.wav" preload="auto"></a-asset-item>
+        <a-asset-item id="sound-left" response-type="arraybuffer" src="assets/audio/qubodupItemHandling/qubodupItemHandling1.wav" preload="auto"></a-asset-item>
+        <a-asset-item id="sound-switch" response-type="arraybuffer" src="assets/audio/light_switch.wav" preload="auto"></a-asset-item>
+        <a-asset-item id="sound-zipper" response-type="arraybuffer" src="assets/audio/zipper.wav" preload="auto"></a-asset-item>
+        <a-asset-item id="sound-door-locked" response-type="arraybuffer" src="assets/audio/DoorLockSounds/LockedDoorHandleJiggle.wav" preload="auto"></a-asset-item>
+        <a-asset-item id="sound-door-open" response-type="arraybuffer" src="assets/audio/DoorLockSounds/DoorOpen.wav" preload="auto"></a-asset-item>
+        <a-asset-item id="sound-fall" response-type="arraybuffer" src="assets/audio/screwfall.mp3" preload="auto"></a-asset-item>
+      </a-assets>
+
+      <!-- structure  -->
+      <!-- <a-plane  position ="-0.5 0.02 0.5" rotation="-90 0 0" color="#ff9999" height="2" width="2"></a-plane> -->
+      <a-plane rotation="-90 0 0" material=" src: #floor; repeat: 8 8 ; " height="3" width="3"></a-plane>
+      <a-plane position ="-1.5 1.5 0" rotation="0 90 0" material=" src: #wall ; " height="3" width="3"></a-plane>
+      <a-plane position ="+1.5 1.5 0" rotation="0 90 0" material=" src: #wall; side:double; " height="3" width="3" ></a-plane>
+      <a-plane position ="0 1.5 -1.5" rotation="0 0 90" material=" src: #wall  ;side:double " height="3" width="3"></a-plane>
+      <a-plane position ="0 1.5 1.5" rotation="0 0 90" material=" src: #wall ;side:double " height="3" width="3"></a-plane>
+      <a-plane position ="0 3 0" rotation="90 0 0" material=" src: #wall ;side:double " height="3" width="3"></a-plane>
+
+      <!-- objects : statics --> 
+      <a-entity gltf-model="#asset-bunk-bed" position="1 0 -0.45" scale="0.025, 0.025, 0.025" rotation="0 270 0"></a-entity>
+      <a-entity gltf-model="#asset-metal_cabinet" position="1.2 1.035 1.06" scale="0.4 0.4 0.4" rotation="0 180 0"></a-entity>
+      <a-entity gltf-model="#asset-desk" position="-0.45 0.44 -1" scale="1 1 1" rotation="0 270 0"></a-entity>
+      <!-- <a-entity gltf-model="#asset-boot" position="0.7 0 0" scale="1 1 1" rotation="0 120 0"></a-entity>
+      <a-entity gltf-model="#asset-boot" position="0.7 0.058 0.16" scale="1 1 1" rotation="10 120 100"></a-entity> -->
+      <a-plane 
+        id="sign" 
+        rotation="0 0 0" 
+        position="-0.488 1.7 -1.499" 
+        material="shader: flat; src: #sign-img; " 
+        height="0.6" 
+        width="1">
+      </a-plane>
+
+
+      <!-- lights  -->
+      <a-entity gltf-model="#asset-light" position="0 3 0" scale="0.008, 0.008, 0.008" rotation="90 0 0"></a-entity>
+      <a-entity 
+        id="ambient-light"
+        light="type: ambient; color: #FFF; intensity: 1" >
+      </a-entity>
+      <a-entity 
+        id="lamp" 
+        light="type: point; color: #fbee98; intensity: 5; distance: 6; decay: 6" 
+        position="0 2.38 0">
+      </a-entity> 
+      <a-entity 
+        id="switch"
+        gltf-model="#asset-switch" 
+        position="-1.091 1.111 1.494" 
+        scale="0.04 0.04 0.04" 
+        rotation="-10 180 180"
+        hover-highlighter
+        sound="src: #sound-switch; on: click; volume: 1"
+        toggle-event="evtbase: click; evt1: switchOff; evt2: switchOn"
+        event-set__lightOn="_event:switchOn; _target: #lamp; light.intensity: 5"
+        event-set__lightOff="_event:switchOff; _target: #lamp; light.intensity: 0">
+      </a-entity>
+
+      <!-- Nails --> 
+      <a-entity
+        id="nail1"
+        gltf-model="#asset-nail" 
+        position="-1.48 1.7 0.2" 
+        scale="0.03 0.03 0.03" 
+        rotation="-6 270 0"
+        hover-highlighter
+        timer="evtbase:click; timer: 300; evtfinal:onFloor"
+        sound="src: #sound-fall; on: onFloor; volume: 1"
+        animation__pos="property:position; to: -1.353 0.036 0.06; dur:300; startEvents:click"
+        animation__rot="property:rotation; to: -6 300 0; dur:300; startEvents:click">
+      </a-entity>
+      <a-entity 
+        id="nail2"
+        gltf-model="#asset-nail" 
+        position="-1.46 1.72 0.6" 
+        scale="0.03 0.03 0.03" 
+        rotation="-3 270 0"
+        hover-highlighter
+        timer="evtbase:click; timer: 300; evtfinal:onFloor"
+        sound="src: #sound-fall; on: onFloor; volume: 1"
+        animation__pos="property:position; to: -1.344 0.036 0.496; dur:300; startEvents:click"
+        animation__rot="property:rotation; to: -3 220 0; dur:300; startEvents:click">
+      </a-entity>
+      <a-entity 
+        id="nail3"
+        gltf-model="#asset-nail" 
+        position="-1.49 1.69 0.8" 
+        scale="0.03 0.03 0.03" 
+        rotation="4 270 0"
+        hover-highlighter
+        timer="evtbase:click; timer: 300; evtfinal:onFloor"
+        sound="src: #sound-fall; on: onFloor; volume: 1"
+        animation__pos="property:position; to: -1.374 0.036 0.695; dur:300; startEvents:click"
+        animation__rot="property:rotation; to: 4 150 0; dur:300; startEvents:click">
+      </a-entity>
+      <a-entity 
+        id="nail4"
+        gltf-model="#asset-nail" 
+        position="-1.49 1.7 0.4" 
+        scale="0.03 0.03 0.03" 
+        rotation="4 270 0"
+        hover-highlighter
+        timer="evtbase:click; timer: 300; evtfinal:onFloor"
+        sound="src: #sound-fall; on: onFloor; volume: 1"
+        animation__pos="property:position; to: -1.36 0.036 0.44; dur:300; startEvents:click"
+        animation__rot="property:rotation; to: 4 190 0; dur:300; startEvents:click">
+      </a-entity>
+        
+      <!-- Stuff --> 
+      <a-entity 
+        id="backpack"
+        hover-highlighter
+        gltf-model="#asset-backpack"
+        position="-1.43 1.45 0.4"
+        scale="0.05 0.05 0.05 "
+        rotation="6 90 0"
+        dropzone="offset: 0 -0.05 0;"
+        sound__drop="src: #sound-left; on: received; volume: 1;"
+        wait-event="evtbase: received; evtfinal: backpackFilled; nbevent: 2;"
+
+        timer="evtbase:backpackFilled; timer: 300; evtfinal:closing"
+        sound__filled="src: #sound-zipper; on: closing; volume: 1;" 
+        event-set__filled="_event: closing; grabbable.active:true "
+        grabbable="target: #right-hand; active:false"
+
+        double-condition="cond1: backpackFilled; cond2: click; result: takingBag"
+        sound__pick="src: #sound-pick; on: takingBag; volume: 1;">
+      </a-entity>
+      <a-entity
+        id="knife"
+        hover-highlighter 
+        grabbable="target: #right-hand"
+        gltf-model="#asset-knife" 
+        position="0.78 1.48 0.13" 
+        scale="0.0003 0.0003 0.0003" 
+        rotation="80 30 -10"
+        sound="src: #sound-pick; on: click; volume: 1"
+        animation="property: visible; to: false; dur: 10; startEvents: inBackPack"
+        event-set__notGrabbable="_event: inBackPack; grabbable.active:false"
+        event-set__notGrabbableSound="_event: inBackPack; sound.volume:0"
+        event-set__notGrabbableHover="_event: inBackPack; hover-highlighter.color:black"
+        listen-to="target: #backpack; event: backpackFilled; emit: inBackPack; once: true">
+      </a-entity> 
+      <a-entity 
+        id="bottle"
+        hover-highlighter 
+        grabbable="target: #right-hand" 
+        gltf-model="#asset-bottle" 
+        position="-1.25 1 -0.7" 
+        scale="0.1 0.1 0.1" 
+        rotation="0 220 0"
+        sound="src: #sound-pick; on: click; volume: 1"
+        animation="property: visible; to: false; dur: 10; startEvents: inBackPack"
+        event-set__notGrabbable="_event: inBackPack; grabbable.active:false  "
+        event-set__notGrabbableSound="_event: inBackPack; sound.volume:0"
+        event-set__notGrabbableHover="_event: inBackPack; hover-highlighter.color:black"
+        listen-to="target: #backpack; event: backpackFilled; emit: inBackPack; once: true">
+      </a-entity>
+
+      <!-- Door  -->
+      <a-entity 
+        id="door"
+        level-completed="finished: false ; pageHTML: laboratory.html"
+        hover-highlighter
+        gltf-model="#asset-door" 
+        position="-0.424 1.16 1.468" 
+        scale="0.01, 0.01, 0.01" 
+        rotation="0 90 0"
+        sound="src: #sound-door-locked; on: click; volume: 1"
+
+        listen-to="target: #backpack; event: grabbed; emit: ready; once: true"
+        timer="evtbase:ready; timer: 500; evtfinal:levelCompleted"
+        event-set__soundClosed="_event: levelCompleted; sound.volume:0"
+        sound__opened="src: #sound-door-open; on: levelCompleted; volume: 2"
+        event-set__open="_event: levelCompleted; level-completed.finished:true">
+      </a-entity>
+  
+      <!-- avatar  -->
+      <a-entity id="rig"
+          disable-in-vr="component: movement-controls"
+          movement-controls="constrainToNavMesh: true;"
+          position="-0.5 0 1.2">
+
+          <a-entity id="head" position="0 1.7 0" camera look-controls="pointerLockEnabled: true">
+              <a-entity
+                id="eyes"
+                geometry="primitive: circle; radius: 0.0005"
+                material="color: black"
+                position="0 0 -0.1"
+                cursor
+                disable-in-vr="component: geometry"
+                disable-in-vr__cursor="component: cursor"
+                raycaster="objects: [hover-highlighter]; far: 1.5">
+              </a-entity>
+          </a-entity>
+
+          <a-entity id="hands" position="0 0.9 0" bind-rotation="target: #head" disable-in-vr="component: bind-rotation" disable-in-vr__pos="component: position">
+            <a-entity id="left-hand"
+              position="-0.3 0 -0.3"
+              rotation="0 0 90"
+              bind-rotation="target: #head"
+              disable-in-vr="component: bind-rotation"
+              hand-controls="hand: left"
+              teleport-controls="cameraRig: #rig; collisionEntities: #nav-mesh-spawn; button: trigger; curveShootingSpeed: 8">   
+            </a-entity>
+            <a-entity id="right-hand"
+              position="0.3 0 -0.3"
+              rotation="0 0 -90"
+              bind-rotation="target: #head"
+              disable-in-vr="component: bind-rotation"
+              hand-controls="hand: right"
+              laser-controls="hand: right"
+              raycaster="far: 1.5; objects: [hover-highlighter]; showLine: true">
+            </a-entity>
+          </a-entity>
+      </a-entity>
+    </a-scene>
+  </body>
+</html>

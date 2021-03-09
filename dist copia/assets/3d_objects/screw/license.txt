@@ -1,0 +1,11 @@
+Model Information:
+* title:	Just a screw
+* source:	https://sketchfab.com/3d-models/just-a-screw-407a4e705558487abc450a8eb05fea01
+* author:	XialiMu.Bell (https://sketchfab.com/XialiMu.Bell)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Just a screw" (https://sketchfab.com/3d-models/just-a-screw-407a4e705558487abc450a8eb05fea01) by XialiMu.Bell (https://sketchfab.com/XialiMu.Bell) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
