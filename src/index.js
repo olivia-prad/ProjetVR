@@ -8,3 +8,8 @@ import "components/dropzone.js";
 import "components/hexatile.js";
 import "components/navmesh-manager.js";
 import "components/ws-synch.js";
+import "components/toggle-event.js";
+import "components/wait-event.js";
+import "components/timer.js";
+import "components/double-condition.js";
+import "components/level-completed.js";

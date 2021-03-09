@@ -1,6 +1,7 @@
 AFRAME.registerComponent('grabbable', {
   schema: {
-    target: {type: 'selector'}
+    target: {type: 'selector'},
+    active: {type: 'boolean', default: true}
   },
   init: function () {
     this.initialPos = {...this.el.object3D.position};
@@ -26,6 +27,7 @@ AFRAME.registerComponent('grabbable', {
   },
   grab: function (evt) {
     if (this.target) return;
+    if (!this.data.active) return;
     this.target = this.data.target;
     this.el.emit('grabbed');
   },

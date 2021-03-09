@@ -20,16 +20,34 @@
             <a-asset-item id="red_button" src="assets/3d_objects/red_button/scene.gltf"></a-asset-item>
           </a-assets>
 
-          <!-- structure  -->
-          <a-plane rotation="-90 0 0" material="shader: flat; src: #floor; repeat: 4 4 ; " height="3" width="3"></a-plane>
-          <a-plane position ="-1.5 1.5 0" rotation="0 90 0" material="shader: flat; src: #wall ; " height="3" width="3"></a-plane>
-          <a-plane position ="+1.5 1.5 0" rotation="0 90 0" material="shader: flat; src: #wall; side:double; " height="3" width="3" ></a-plane>
-          <a-plane position ="0 1.5 -1.5" rotation="0 0 90" material="shader: flat; src: #wall  ;side:double " height="3" width="3"></a-plane>
-          <a-plane position ="0 1.5 1.5" rotation="0 0 90" material="shader: flat; src: #wall ;side:double " height="3" width="3"></a-plane>
-          <a-plane position ="0 3 0" rotation="90 0 0" material="shader: flat; src: #wall ;side:double " height="3" width="3"></a-plane>
   
           <!-- objects  --> 
-          <a-entity hover-highlighter gltf-model="#red_button" position="0 1.07 0" scale="0.1, 0.1, 0.1"></a-entity>
+          <a-entity
+                    id="blue"
+                    hover-highlighter
+                    geometry="primitive: box; depth: 1; height:1; width:1;"
+                    material="color: red; metalness:0.5;"
+                    position="0 0 0">
+          </a-entity>
+
+          <a-entity
+                    id="red"
+                    hover-highlighter
+                    geometry="primitive: box; depth: 1; height:1; width:1;"
+                    material="color: blue; metalness:0.5;"
+                    position="0 1 0">
+          </a-entity>
+
+          <a-entity
+                    id="purple"
+                    geometry="primitive: box; depth: 1; height:1; width:1;"
+                    material="color: purple; metalness:0.5;"
+                    position="1 0 0"
+                    listen-to__blue="target: #blue; event: click; emit: blueClicked; once: true"
+                    listen-to__red="target: #red; event: click; emit: redClicked; once: true"
+                    double-condition="cond1: blueClicked; cond2: redClicked; result: purpleOK"
+                    animation="property: material.color; to: #00ff00; delay:1000; dur: 2000; startEvents: purpleOK">
+          </a-entity>
 
 
 
